@@ -1,0 +1,761 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="theme-color" content="#0d1522">
+<meta name="mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+<title>Digital Dokan Pro — POS, Khata & Inventory</title>
+<style>
+:root{
+  --bg:#050805;--panel:#0b110d;--panel2:#07100b;--panel3:#101812;--line:#203129;--text:#f4faf6;
+  --muted:#9aaea3;--green:#22d39a;--green2:#079669;--green3:#0b5f47;--red:#ef4444;--amber:#f59e0b;
+  --blue:#3b82f6;--purple:#8b5cf6;--whiteShade:#eef6f1;--shadow:0 18px 50px rgba(0,0,0,.34)
+}
+*{box-sizing:border-box} body{margin:0;background:radial-gradient(circle at 70% -10%,#102219 0,#050805 38%,#030503 100%);color:var(--text);font-family:Inter,ui-sans-serif,system-ui,-apple-system,Segoe UI,sans-serif;letter-spacing:.01em}
+button,input,select,textarea{font:inherit} button{cursor:pointer}
+.app{display:flex;min-height:100vh}.sidebar{width:270px;background:linear-gradient(180deg,#0a110d,#070c09 72%,#050805);border-right:1px solid var(--line);display:flex;flex-direction:column;position:fixed;inset:0 auto 0 0;z-index:30}
+.brand{padding:17px 15px;border-bottom:1px solid var(--line);display:flex;gap:11px;align-items:center}
+.logo{width:48px;height:48px;flex:none;display:grid;place-items:center;border-radius:12px;background:linear-gradient(140deg,#18d291,#087f5b);color:#fff;font-weight:950;font-size:17px;filter:drop-shadow(0 7px 14px rgba(34,211,154,.18))}.brand h1{font-size:18px;margin:0;color:var(--green);font-weight:900}.brand p{font-size:10px;color:#9fb0c5;margin:2px 0 0;font-weight:700}
+.nav{padding:12px}.nav button{width:100%;border:0;background:transparent;color:#9aaabd;padding:11px 12px;border-radius:10px;text-align:left;font-weight:700;font-size:12px;display:flex;gap:10px;align-items:center;margin:2px 0}
+.nav button:hover{background:#102019;color:white}.nav button.active{background:linear-gradient(135deg,#0aa977,#087b59);color:#fff;box-shadow:0 8px 20px rgba(16,201,139,.14)}
+.sidebar-footer{margin-top:auto;padding:13px 15px;border-top:1px solid var(--line);font-size:10px;color:#71839a;display:flex;justify-content:space-between}.online{color:var(--green);font-weight:800}
+.main{margin-left:270px;flex:1;min-width:0}.topbar{height:68px;background:rgba(7,12,9,.92);backdrop-filter:blur(14px);border-bottom:1px solid var(--line);display:flex;align-items:center;justify-content:space-between;padding:0 22px;position:sticky;top:0;z-index:20}.page-title{font-weight:900;font-size:16px}.top-actions{display:flex;gap:8px}.btn{border:1px solid #2a3a31;background:#111b15;color:#e7edf5;padding:9px 13px;border-radius:9px;font-size:12px;font-weight:800}.btn:hover{filter:brightness(1.12)}.btn.green{background:var(--green2);border-color:var(--green2);color:#fff}.btn.red{background:#4a1018;border-color:#7f1d1d;color:#fecaca}.btn.amber{background:#6b3b05;border-color:#a16207;color:#ffedd5}.btn.blue{background:#1d4ed8;border-color:#2563eb}.btn.ghost{background:transparent}.btn.sm{padding:6px 9px;font-size:11px}.content{padding:20px;max-width:1600px;margin:auto}.view{display:none}.view.active{display:block}
+.app-footer{margin-left:270px;padding:42px 20px 25px;background:#080e0a;border-top:1px solid var(--line);color:#9aaea3;font-size:11px}.app-footer-grid{display:grid;grid-template-columns:1.5fr repeat(3,1fr);gap:30px}.app-footer h4{color:#fff;margin:0 0 12px}.app-footer a{color:#b6c7bc;margin:8px 16px 8px 0;font-weight:800;display:block}.app-footer a:hover{color:var(--green)}.app-footer .copyright{border-top:1px solid #263a2d;margin-top:28px;padding-top:18px;color:#6b7280;font-size:12px}
+.grid{display:grid;gap:16px}.g4{grid-template-columns:repeat(4,minmax(0,1fr))}.g3{grid-template-columns:repeat(3,minmax(0,1fr))}.g2{grid-template-columns:repeat(2,minmax(0,1fr))}.posgrid{grid-template-columns:minmax(0,1.55fr) minmax(330px,.9fr)}
+.card{background:linear-gradient(180deg,#0d1510,#09100c);border:1px solid var(--line);border-radius:16px;box-shadow:var(--shadow)}.pad{padding:18px}.card-head{display:flex;justify-content:space-between;align-items:center;gap:12px;border-bottom:1px solid var(--line);padding-bottom:13px;margin-bottom:14px}.card-title{font-size:14px;font-weight:900}.muted{color:var(--muted)}.tiny{font-size:10px}.small{font-size:12px}
+.stat{padding:17px;border-radius:15px;background:linear-gradient(145deg,#101a14,#09100c);border:1px solid var(--line)}.stat-label{font-size:10px;color:#8ea0b6;font-weight:800;text-transform:uppercase}.stat-value{font-size:24px;font-weight:950;margin:4px 0}.green-text{color:var(--green)}.red-text{color:#ff6471}.amber-text{color:#fbbf24}.blue-text{color:#60a5fa}.purple-text{color:#a78bfa}
+.field{margin-bottom:11px}.field label{display:block;color:#9caec2;font-size:10px;font-weight:800;margin:0 0 5px;text-transform:uppercase}.input,.select,.textarea{width:100%;background:#070d09;border:1px solid #2a3950;color:#eaf1f8;padding:10px 11px;border-radius:9px;outline:0;font-size:12px}.input:focus,.select:focus,.textarea:focus{border-color:var(--green);box-shadow:0 0 0 3px rgba(34,211,154,.10)}
+input[type=date]{color-scheme:dark;cursor:pointer;min-height:42px;position:relative}input[type=date]::-webkit-calendar-picker-indicator{opacity:1;cursor:pointer;width:18px;height:18px;padding:2px;margin-left:4px}input[type=date]::-webkit-datetime-edit{cursor:text}.date-field{position:relative}.date-field .input{padding-right:44px}.date-open{position:absolute;right:9px;bottom:7px;width:28px;height:28px;border:0;border-radius:7px;background:#102019;color:var(--green);display:grid;place-items:center;pointer-events:none;font-size:15px}.textarea{min-height:80px;resize:vertical}
+.flex{display:flex}.between{justify-content:space-between}.center{align-items:center}.gap8{gap:8px}.gap12{gap:12px}.wrap{flex-wrap:wrap}
+.pos-cart{min-height:260px;border:1px solid var(--line);border-radius:12px;overflow:auto}.table{width:100%;border-collapse:collapse;font-size:12px}.table th{background:#142018;color:#9db0c6;text-align:left;padding:10px;font-size:10px;text-transform:uppercase}.table td{padding:10px;border-top:1px solid #1c2940}.table tr:hover td{background:#121e30}.right{text-align:right}.center-text{text-align:center}
+.total-box{padding:15px;background:#080f1a;border:1px solid var(--line);border-radius:13px}.total-number{font-size:28px;font-weight:950;color:var(--green)}
+.actions{display:flex;gap:8px;flex-wrap:wrap}.actions .btn{flex:1;min-width:110px}
+.badge{display:inline-flex;align-items:center;padding:4px 8px;border-radius:999px;font-size:10px;font-weight:900;border:1px solid}.badge.green{background:#052d23;color:#5ee7b5;border-color:#075f49}.badge.red{background:#3a1118;color:#ff7a86;border-color:#76212c}.badge.amber{background:#3b2606;color:#ffd36b;border-color:#80560a}.badge.blue{background:#102c58;color:#80b7ff;border-color:#1f5599}.badge.gray{background:#172235;color:#aab9ca}
+.searchbar{display:flex;gap:8px;margin-bottom:12px}.searchbar .input{flex:1}.empty{padding:32px;text-align:center;color:#6e8198;font-style:italic}
+.party-card{padding:14px;background:#0b1320;border:1px solid var(--line);border-radius:13px}.party-name{font-size:14px;font-weight:900}.balance{font-size:20px;font-weight:950;margin-top:8px}
+.product-card{padding:12px;background:#09120d;border:1px solid var(--line);border-radius:12px;display:flex;justify-content:space-between;gap:10px;align-items:center}.product-card:hover{border-color:#3b516d}
+.kpi-row{display:flex;gap:10px;flex-wrap:wrap}.mini-kpi{flex:1;min-width:130px;background:#07100b;border:1px solid var(--line);border-radius:11px;padding:12px}.mini-kpi b{display:block;font-size:17px;margin-top:3px}
+.progress{height:7px;background:#1a2638;border-radius:99px;overflow:hidden}.progress i{display:block;height:100%;background:var(--green);border-radius:99px}
+.tabs{display:flex;gap:6px;overflow:auto;margin-bottom:14px}.tabs button{white-space:nowrap}.tabs .active{background:var(--green2);border-color:var(--green2);color:white}
+.modal{position:fixed;inset:0;background:rgba(0,0,0,.78);backdrop-filter:blur(5px);display:none;align-items:center;justify-content:center;padding:18px;z-index:100}.modal.open{display:flex}.modal-box{width:min(760px,100%);max-height:90vh;overflow:auto;background:#0b120e;border:1px solid var(--line);border-radius:16px;padding:19px;box-shadow:0 30px 80px #000}.modal-head{display:flex;justify-content:space-between;align-items:center;margin-bottom:15px}.modal-head h3{margin:0;color:var(--green);font-size:16px}.close{background:transparent;border:0;color:#9eb0c4;font-size:20px}
+.toast{position:fixed;right:20px;bottom:20px;background:#101827;border:1px solid #34516e;color:white;padding:12px 15px;border-radius:11px;box-shadow:var(--shadow);display:none;z-index:200;font-size:12px;font-weight:800}.toast.show{display:block}
+.mobile-menu{display:none}.section-title{margin:0 0 12px;font-size:15px;font-weight:900}.hint{font-size:11px;color:#8092a8}.danger-zone{border:1px solid #64202b;background:#240f16;padding:15px;border-radius:12px}
+.chart{height:300px;background:linear-gradient(180deg,#09130e,#060b08);position:relative;display:flex;align-items:flex-end;gap:10px;padding:20px 10px 35px;border:1px solid var(--line);border-radius:12px;background:#0b1320}.bar-wrap{height:100%;flex:1;display:flex;flex-direction:column;justify-content:flex-end;align-items:center;gap:7px}.bar{width:70%;max-width:45px;background:linear-gradient(#22d39a,#08775a);border-radius:7px 7px 2px 2px;min-height:3px}.bar-label{font-size:10px;color:#8295ab}.bar-value{font-size:9px;color:#a9bbcf;white-space:nowrap}
+
+.brand-dot{color:var(--green);font-size:10px}.trial-pill{display:inline-flex;align-items:center;gap:6px;padding:7px 10px;border-radius:999px;background:#0b2118;border:1px solid #145e46;color:#6ce9ba;font-size:10px;font-weight:900}.pro-banner{display:flex;justify-content:space-between;align-items:center;gap:14px;margin-bottom:16px;padding:12px 15px;border:1px solid #1d4a37;border-radius:14px;background:linear-gradient(90deg,rgba(17,75,54,.55),rgba(9,18,13,.85));box-shadow:0 12px 30px rgba(0,0,0,.16)}.pro-banner strong{display:block;font-size:13px}.pro-banner span{display:block;font-size:10px;color:#9db5a8;margin-top:3px}.pro-badge{padding:6px 9px;border-radius:8px;background:#dceee5;color:#07130c;font-size:10px;font-weight:950}.wide{width:100%;justify-content:center}.license-gate{position:fixed;inset:0;z-index:1000;background:rgba(1,5,2,.92);backdrop-filter:blur(18px);display:none;align-items:center;justify-content:center;padding:18px}.license-gate.show{display:flex}.license-card{width:min(470px,100%);text-align:center;padding:28px;border-radius:24px;border:1px solid #244635;background:linear-gradient(160deg,#0d1711,#050805);box-shadow:0 30px 100px rgba(0,0,0,.6)}.license-logo{margin:0 auto 12px}.license-card h2{font-size:26px;margin:12px 0 8px}.license-card p{color:#a3b6aa;line-height:1.6;font-size:13px;margin:0 auto 14px;max-width:380px}.trial-clock{margin:14px 0;padding:11px;border-radius:12px;background:#07130c;border:1px solid #1e4935;color:#66e4b5;font-size:12px;font-weight:900}.license-card .field{text-align:left}.license-card .badge{margin-top:2px}
+/* Responsive layout — desktop, tablet and mobile */
+html{min-width:0;overflow-x:hidden}body{min-width:0;overflow-x:hidden;-webkit-text-size-adjust:100%;padding-bottom:env(safe-area-inset-bottom)}
+.sidebar-backdrop{display:none}
+.pos-product-row{align-items:end}
+.table-wrap{width:100%;overflow-x:auto;-webkit-overflow-scrolling:touch}
+.table{min-width:640px}
+@media(max-width:1200px){.g4{grid-template-columns:repeat(2,minmax(0,1fr))}.posgrid,.g3{grid-template-columns:1fr}}
+@media(max-width:900px){
+  .sidebar{width:280px;transform:translateX(-105%);transition:transform .22s ease;box-shadow:20px 0 50px rgba(0,0,0,.35)}
+  .sidebar.open{transform:translateX(0)}
+  .sidebar-backdrop{position:fixed;inset:0;background:rgba(0,0,0,.55);z-index:25;backdrop-filter:blur(2px)}
+  .sidebar.open + .sidebar-backdrop{display:block}
+  .main{margin-left:0;width:100%;min-width:0}
+  .app-footer{margin-left:0}
+  .app-footer-grid{grid-template-columns:1fr 1fr}
+  .mobile-menu{display:inline-flex;min-width:42px;justify-content:center}
+  .top-actions .hide-sm{display:none}
+  .topbar{padding:0 14px;min-height:62px;height:auto;gap:8px}
+  .content{padding:14px;max-width:100%}
+  .g2,.g3,.g4{grid-template-columns:1fr}
+  .posgrid{grid-template-columns:1fr}
+  .pos-product-row{grid-template-columns:1fr 1fr !important}
+  .pos-product-row > :first-child{grid-column:1 / -1}
+  .pos-product-row > :last-child{grid-column:1 / -1}
+  .chart{height:260px}
+  .modal{padding:10px}
+  .modal-box{max-height:calc(100vh - 20px);max-height:calc(100dvh - 20px)}
+}
+@media(max-width:600px){
+  .brand-dot{color:var(--green);font-size:10px}.trial-pill{font-size:9px;padding:6px 8px}.pro-banner{align-items:flex-start}.pro-banner span{line-height:1.4}.pro-badge{display:none}
+  .brand{padding:14px 15px}.nav{padding:10px}.nav button{padding:13px 12px;font-size:13px}
+  .topbar{padding:9px 10px;min-height:58px}.page-title{font-size:13px;line-height:1.2}.top-actions{gap:5px}.top-actions .btn{padding:8px 9px;font-size:11px}
+  .content{padding:10px}
+  .card{border-radius:13px}.pad{padding:13px}.card-head{align-items:flex-start;gap:8px}.card-title{font-size:13px}
+  .stat{padding:14px}.stat-value{font-size:21px}.total-number{font-size:24px}
+  .actions{display:grid;grid-template-columns:1fr 1fr;gap:7px}.actions .btn{min-width:0;width:100%;padding:10px 7px;font-size:11px}
+  .searchbar{flex-direction:column}.searchbar .input{max-width:none !important}
+  .input,.select,.textarea{font-size:16px;min-height:44px;padding:10px 11px}
+  .field{margin-bottom:10px}
+  .pos-cart{min-height:180px}.table{font-size:11px;min-width:620px}.table th,.table td{padding:9px 8px}
+  .kpi-row{display:grid;grid-template-columns:1fr 1fr}.mini-kpi{min-width:0}
+  .chart{height:230px;padding:15px 5px 30px;gap:4px}.bar{width:65%;max-width:36px}.bar-value{font-size:8px}
+  .party-card,.product-card{padding:12px}
+  .modal-head{position:sticky;top:0;background:#101827;padding-bottom:10px;z-index:2}
+}
+@media(max-width:380px){
+  .top-actions .btn.green{font-size:10px;padding:8px 7px}
+  .page-title{max-width:150px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+  .actions{grid-template-columns:1fr}
+  .kpi-row{grid-template-columns:1fr}
+  .pos-product-row{grid-template-columns:1fr !important}
+  .pos-product-row > *{grid-column:1 !important}
+}
+@media(min-width:901px){.sidebar-backdrop{display:none!important}}
+@media print{
+  body{background:white;color:#111}.app,.modal,.toast{display:none!important}.print-area{display:block!important}.print-area *{color:#111!important}.invoice-print{display:block!important}
+}
+.print-area{display:none}
+</style>
+</head>
+<body>
+<div class="app">
+<aside class="sidebar" id="sidebar">
+  <div>
+    <div class="brand">
+      <div class="logo">
+        DD
+      </div>
+      <div><h1>Digital Dokan</h1><p>Smart POS • Khata • Inventory</p></div>
+    </div>
+    <nav class="nav">
+      <button onclick="window.location.href='./index.html'">⌂ <span>Home</span></button>
+      <button data-view="pos" class="active">🛒 <span>Quick Billing / POS</span></button>
+      <button data-view="dashboard">📊 <span>Dashboard</span></button>
+      <button data-view="sales">📜 <span>Sales & Invoices</span></button>
+      <button data-view="parties">👥 <span>Customers & Khata</span></button>
+      <button data-view="inventory">📦 <span>Inventory & Stock</span></button>
+      <button data-view="purchases">🚚 <span>Purchases & Suppliers</span></button>
+      <button data-view="expenses">💰 <span>Cash & Expenses</span></button>
+      <button data-view="reports">📈 <span>Reports</span></button>
+      <button data-view="settings">⚙️ <span>Settings & Backup</span></button>
+    </nav>
+  </div>
+  <div class="sidebar-footer"><span>Status: <b class="online">● Secure Local</b></span><span>PRO v4.0</span></div>
+</aside>
+<div class="sidebar-backdrop" id="sidebarBackdrop"></div>
+
+<main class="main">
+<header class="topbar">
+  <div class="flex center gap8"><button class="btn mobile-menu" id="menuBtn">☰</button><span class="brand-dot">●</span><span class="page-title" id="pageTitle">Quick Billing / POS</span></div>
+  <div class="top-actions"><a class="btn" href="./index.html">Back to website</a><span class="trial-pill" id="trialPill">7-Day Free Trial</span>
+    <button class="btn green" onclick="openModal('invoiceModal')">+ Quick Invoice</button>
+    <button class="btn hide-sm" onclick="openModal('partyModal')">+ Customer</button>
+    <button class="btn hide-sm" onclick="openModal('itemModal')">+ Product</button>
+  </div>
+</header>
+
+<div class="content">
+<div class="pro-banner"><div><strong>Digital Dokan Pro</strong><span>Simple English • Fast billing • Khata • Stock • WhatsApp</span></div><div class="pro-badge">PRO</div></div>
+
+<!-- POS -->
+<section id="view-pos" class="view active">
+  <div class="grid posgrid">
+    <div class="card pad">
+      <div class="card-head"><div class="card-title">🧾 Quick Billing / Checkout</div><span class="badge green" id="invoiceTag">INV-1001</span></div>
+      <div class="grid g2">
+        <div class="field"><label>Customer</label><input class="input" id="posCustomer" list="customerList" placeholder="Walk-in Customer"></div>
+        <div class="field"><label>WhatsApp / Phone</label><input class="input" id="posPhone" placeholder="03XXXXXXXXX"></div>
+      </div>
+      <datalist id="customerList"></datalist>
+      <div class="card" style="background:#0b1320;margin-bottom:13px">
+        <div class="pad">
+          <div class="grid pos-product-row" style="grid-template-columns:2fr 1fr .7fr auto">
+            <div class="field"><label>Product / Barcode</label><input class="input" id="lineName" list="productList" placeholder="e.g. Atta 10kg"></div>
+            <div class="field"><label>Price (Rs)</label><input class="input" id="linePrice" type="number" min="0" placeholder="0"></div>
+            <div class="field"><label>Qty</label><input class="input" id="lineQty" type="number" min="1" value="1"></div>
+            <div style="display:flex;align-items:end;margin-bottom:11px"><button class="btn green" onclick="addCartLine()">+ Add</button></div>
+          </div>
+          <datalist id="productList"></datalist>
+          <div class="hint">Tip: Type a product name or SKU. Stock is checked automatically. For a new product, add it from the Product button.</div>
+        </div>
+      </div>
+      <div class="pos-cart">
+        <table class="table"><thead><tr><th>Item</th><th>Price</th><th>Qty</th><th>Total</th><th></th></tr></thead><tbody id="cartBody"></tbody></table>
+      </div>
+      <div style="margin-top:13px" class="grid g2">
+        <div class="field"><label>Discount (Rs)</label><input class="input" id="posDiscount" type="number" min="0" value="0" oninput="renderCart()"></div>
+        <div class="field"><label>Payment Method</label><select class="select" id="posPayment"><option>Cash</option><option>Bank Transfer</option><option>JazzCash</option><option>Easypaisa</option><option>Card</option><option>Udhaar</option><option>Partial</option></select></div>
+      </div>
+      <div class="total-box">
+        <div class="flex between center"><span class="small muted">Grand Total</span><span class="total-number" id="cartTotal">Rs. 0</span></div>
+        <div id="partialFields" class="grid g2" style="display:none;margin-top:10px">
+          <div class="field"><label>Paid Amount</label><input class="input" id="posPaid" type="number" min="0" value="0" oninput="updateTotals()"></div>
+          <div><label style="display:block;color:#9caec2;font-size:10px;font-weight:800;margin:0 0 5px;text-transform:uppercase">Remaining Udhaar</label><div class="input" id="posDue">Rs. 0</div></div>
+        </div>
+        <div class="actions" style="margin-top:12px">
+          <button class="btn green" onclick="checkout('save')">💾 Save Sale</button>
+          <button class="btn" onclick="checkout('whatsapp')">💬 Save + WhatsApp</button>
+          <button class="btn amber" onclick="setUdhaar()">📕 Udhaar</button>
+          <button class="btn blue" onclick="printCurrentInvoice()">🖨️ Print</button>
+          <button class="btn red" onclick="clearCart()">Clear</button>
+        </div>
+      </div>
+    </div>
+
+    <div class="card pad">
+      <div class="card-head"><div class="card-title">📕 Customer Khata Snapshot</div><span class="badge gray">Live</span></div>
+      <div id="posKhataSnapshot" class="empty">Select a customer to view balance.</div>
+      <div style="margin-top:14px" class="card" id="recentKhataCard">
+        <div class="pad">
+          <div class="small" style="font-weight:900;margin-bottom:10px">Recent Khata Activity</div>
+          <div id="recentKhataList" class="small"></div>
+        </div>
+      </div>
+      <div style="margin-top:14px" class="card">
+        <div class="pad">
+          <div class="small" style="font-weight:900;margin-bottom:10px">Quick Customer Actions</div>
+          <div class="actions"><button class="btn sm" onclick="openModal('paymentModal')">+ Receive Payment</button><button class="btn sm" onclick="openModal('statementModal')">📄 Statement</button></div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="card pad" style="margin-top:16px">
+    <div class="card-head"><div class="card-title">📜 Recent Sales</div><button class="btn sm" onclick="switchView('sales')">View All</button></div>
+    <div id="recentSales"></div>
+  </div>
+</section>
+
+<!-- DASHBOARD -->
+<section id="view-dashboard" class="view">
+  <div class="grid g4" id="dashboardStats"></div>
+  <div class="grid g2" style="margin-top:16px">
+    <div class="card pad"><div class="card-head"><div class="card-title">📈 Last 7 Days Sales</div><span class="badge green">Real Data</span></div><div class="chart" id="salesChart"></div></div>
+    <div class="card pad"><div class="card-head"><div class="card-title">⚡ Business Snapshot</div></div><div id="dashboardSnapshot"></div></div>
+  </div>
+  <div class="grid g3" style="margin-top:16px">
+    <div class="card pad"><h3 class="section-title">Low Stock</h3><div id="lowStock"></div></div>
+    <div class="card pad"><h3 class="section-title">Top Customers</h3><div id="topCustomers"></div></div>
+    <div class="card pad"><h3 class="section-title">Top Products</h3><div id="topProducts"></div></div>
+  </div>
+</section>
+
+<!-- SALES -->
+<section id="view-sales" class="view">
+  <div class="card pad">
+    <div class="card-head"><div><div class="card-title">📜 Sales & Invoice History</div><div class="hint">Search invoices, customers and payment status.</div></div><div class="actions"><button class="btn sm" onclick="exportCSV('sales')">Export CSV</button><button class="btn sm" onclick="openModal('invoiceModal')">+ Quick Invoice</button></div></div>
+    <div class="searchbar"><input class="input" id="salesSearch" placeholder="Search invoice, customer, phone..." oninput="renderSales()"><div class="date-field" style="max-width:180px;flex:1"><input class="input" id="salesDate" type="date" onchange="renderSales()" aria-label="Filter sales by date"><span class="date-open">▣</span></div></div>
+    <div style="overflow:auto"><table class="table"><thead><tr><th>Date</th><th>Invoice</th><th>Customer</th><th>Items</th><th>Total</th><th>Paid</th><th>Due</th><th>Payment</th><th>Action</th></tr></thead><tbody id="salesBody"></tbody></table></div>
+  </div>
+</section>
+
+<!-- PARTIES -->
+<section id="view-parties" class="view">
+  <div class="card pad">
+    <div class="card-head"><div><div class="card-title">👥 Customers & Khata</div><div class="hint">Every customer has a complete ledger, sales and payment history.</div></div><button class="btn green" onclick="openModal('partyModal')">+ Add Customer</button></div>
+    <div class="searchbar"><input class="input" id="partySearch" placeholder="Search customer or phone..." oninput="renderParties()"></div>
+    <div id="partiesGrid" class="grid g3"></div>
+  </div>
+</section>
+
+<!-- INVENTORY -->
+<section id="view-inventory" class="view">
+  <div class="card pad">
+    <div class="card-head"><div><div class="card-title">📦 Inventory & Stock</div><div class="hint">Stock decreases automatically after a POS sale.</div></div><button class="btn green" onclick="openModal('itemModal')">+ Add Product</button></div>
+    <div class="searchbar"><input class="input" id="itemSearch" placeholder="Search product, SKU, category..." oninput="renderInventory()"></div>
+    <div style="overflow:auto"><table class="table"><thead><tr><th>Product</th><th>SKU / Barcode</th><th>Category</th><th>Buy</th><th>Sale</th><th>Stock</th><th>Low At</th><th>Action</th></tr></thead><tbody id="inventoryBody"></tbody></table></div>
+  </div>
+</section>
+
+<!-- PURCHASES -->
+<section id="view-purchases" class="view">
+  <div class="grid g2">
+    <div class="card pad">
+      <div class="card-head"><div class="card-title">🚚 Record Purchase</div></div>
+      <form id="purchaseForm">
+        <div class="grid g2">
+          <div class="field"><label>Supplier</label><input class="input" id="purchaseSupplier" required placeholder="Supplier name"></div>
+          <div class="field"><label>Invoice #</label><input class="input" id="purchaseInvoice" placeholder="Supplier invoice"></div>
+        </div>
+        <div class="field"><label>Product</label><select class="select" id="purchaseProduct"></select></div>
+        <div class="grid g3">
+          <div class="field"><label>Qty</label><input class="input" id="purchaseQty" type="number" min="1" value="1"></div>
+          <div class="field"><label>Buy Price</label><input class="input" id="purchasePrice" type="number" min="0" value="0"></div>
+          <div class="field"><label>Payment</label><select class="select" id="purchasePayment"><option>Cash</option><option>Bank Transfer</option><option>Credit</option></select></div>
+        </div>
+        <button class="btn green" type="submit">Save Purchase & Add Stock</button>
+      </form>
+    </div>
+    <div class="card pad"><div class="card-head"><div class="card-title">Suppliers</div></div><div id="supplierList"></div></div>
+  </div>
+  <div class="card pad" style="margin-top:16px"><div class="card-head"><div class="card-title">Purchase History</div><button class="btn sm" onclick="exportCSV('purchases')">Export CSV</button></div><div style="overflow:auto"><table class="table"><thead><tr><th>Date</th><th>Supplier</th><th>Invoice</th><th>Product</th><th>Qty</th><th>Total</th><th>Payment</th></tr></thead><tbody id="purchaseBody"></tbody></table></div></div>
+</section>
+
+<!-- EXPENSES -->
+<section id="view-expenses" class="view">
+  <div class="grid g2">
+    <div class="card pad"><div class="card-head"><div class="card-title">💰 Add Expense</div></div>
+      <form id="expenseForm"><div class="grid g2">
+        <div class="field"><label>Category</label><select class="select" id="expenseCategory"><option>Rent</option><option>Electricity</option><option>Transport</option><option>Salary</option><option>Shop Supplies</option><option>Other</option></select></div>
+        <div class="field"><label>Amount (Rs)</label><input class="input" id="expenseAmount" type="number" min="1" required></div>
+      </div><div class="field"><label>Note</label><input class="input" id="expenseNote" placeholder="e.g. electricity bill"></div><button class="btn green">Save Expense</button></form>
+    </div>
+    <div class="card pad"><div class="card-head"><div class="card-title">This Month Expenses</div></div><div id="expenseTotal" class="total-number">Rs. 0</div><div class="hint">Expenses reduce net profit in reports.</div></div>
+  </div>
+  <div class="card pad" style="margin-top:16px"><div class="card-head"><div class="card-title">Expense History</div><button class="btn sm" onclick="exportCSV('expenses')">Export CSV</button></div><div style="overflow:auto"><table class="table"><thead><tr><th>Date</th><th>Category</th><th>Note</th><th>Amount</th><th></th></tr></thead><tbody id="expenseBody"></tbody></table></div></div>
+</section>
+
+<!-- REPORTS -->
+<section id="view-reports" class="view">
+  <div class="card pad">
+    <div class="card-head"><div><div class="card-title">📈 Business Reports</div><div class="hint">Use date filters for daily/monthly analysis.</div></div><div class="actions"><button class="btn sm" onclick="exportCSV('sales')">Sales CSV</button><button class="btn sm" onclick="exportCSV('khata')">Khata CSV</button></div></div>
+    <div class="grid g2"><div class="field date-field"><label>From</label><input class="input" type="date" id="reportFrom" onchange="renderReports()" aria-label="Report start date"><span class="date-open">▣</span></div><div class="field date-field"><label>To</label><input class="input" type="date" id="reportTo" onchange="renderReports()" aria-label="Report end date"><span class="date-open">▣</span></div></div>
+    <div id="reportCards" class="grid g4" style="margin-top:10px"></div>
+  </div>
+  <div class="grid g2" style="margin-top:16px"><div class="card pad"><div class="card-head"><div class="card-title">Payment Collection</div></div><div id="paymentReport"></div></div><div class="card pad"><div class="card-head"><div class="card-title">Sales by Day</div></div><div id="reportDayChart" class="chart"></div></div></div>
+</section>
+
+<!-- SETTINGS -->
+<section id="view-settings" class="view">
+  <div class="grid g2">
+    <div class="card pad"><div class="card-head"><div class="card-title">🏪 Business Profile</div></div>
+      <div class="field"><label>Business Name</label><input class="input" id="setBusinessName"></div>
+      <div class="grid g2"><div class="field"><label>Phone</label><input class="input" id="setBusinessPhone"></div><div class="field"><label>WhatsApp</label><input class="input" id="setBusinessWhatsApp"></div></div>
+      <div class="field"><label>Address</label><textarea class="textarea" id="setBusinessAddress"></textarea></div>
+      <div class="field"><label>Invoice Footer</label><input class="input" id="setInvoiceFooter"></div>
+      <button class="btn green" onclick="saveSettings()">Save Business Settings</button>
+    </div>
+    <div class="card pad"><div class="card-head"><div class="card-title">💾 Backup & Restore</div></div>
+      <p class="hint">Responsive on mobile, tablet and laptop. This version stores data in this browser. Export a backup regularly before changing devices.</p>
+      <div class="actions"><button class="btn green" onclick="backupData()">⬇ Download Backup</button><button class="btn" onclick="document.getElementById('restoreFile').click()">⬆ Restore Backup</button><input id="restoreFile" type="file" accept=".json" hidden onchange="restoreData(event)"></div>
+      <div class="actions" style="margin-top:9px"><button class="btn" onclick="exportCSV('sales')">Sales CSV</button><button class="btn" onclick="exportCSV('inventory')">Inventory CSV</button><button class="btn" onclick="exportCSV('khata')">Khata CSV</button></div>
+    </div>
+  </div>
+  <div class="card pad" style="margin-top:16px"><div class="card-head"><div class="card-title">🧹 Data Management</div></div><div class="danger-zone"><b>Danger Zone</b><p class="hint">Delete all local data only after you have downloaded a backup.</p><button class="btn red" onclick="resetAll()">Delete All Local Data</button></div></div>
+</section>
+
+</div></main></div>
+
+<!-- PARTY MODAL -->
+<div class="modal" id="partyModal"><div class="modal-box"><div class="modal-head"><h3>👥 Add Customer / Party</h3><button class="close" onclick="closeModal('partyModal')">×</button></div>
+<form id="partyForm"><div class="grid g2"><div class="field"><label>Name *</label><input class="input" id="partyName" required></div><div class="field"><label>Phone / WhatsApp</label><input class="input" id="partyPhone" placeholder="03XXXXXXXXX"></div></div><div class="grid g2"><div class="field"><label>Opening Balance (Udhaar)</label><input class="input" id="partyOpening" type="number" min="0" value="0"></div><div class="field"><label>Address</label><input class="input" id="partyAddress"></div></div><button class="btn green">Save Customer</button></form></div></div>
+
+<!-- ITEM MODAL -->
+<div class="modal" id="itemModal"><div class="modal-box"><div class="modal-head"><h3>📦 Add Product</h3><button class="close" onclick="closeModal('itemModal')">×</button></div>
+<form id="itemForm"><div class="grid g2"><div class="field"><label>Product Name *</label><input class="input" id="itemName" required></div><div class="field"><label>SKU / Barcode</label><input class="input" id="itemSku" placeholder="e.g. 896400000001"></div></div><div class="grid g2"><div class="field"><label>Category</label><input class="input" id="itemCategory" placeholder="Grocery"></div><div class="field"><label>Unit</label><select class="select" id="itemUnit"><option>pcs</option><option>kg</option><option>g</option><option>ltr</option><option>pack</option><option>box</option></select></div></div><div class="grid g3"><div class="field"><label>Purchase Price</label><input class="input" id="itemBuy" type="number" min="0" value="0"></div><div class="field"><label>Sale Price *</label><input class="input" id="itemSale" type="number" min="0" required></div><div class="field"><label>Opening Stock</label><input class="input" id="itemStock" type="number" min="0" value="0"></div></div><div class="field"><label>Low Stock Alert At</label><input class="input" id="itemLow" type="number" min="0" value="5"></div><button class="btn green">Save Product</button></form></div></div>
+
+<!-- INVOICE QUICK MODAL -->
+<div class="modal" id="invoiceModal"><div class="modal-box"><div class="modal-head"><h3>🧾 Quick Invoice</h3><button class="close" onclick="closeModal('invoiceModal')">×</button></div>
+<form id="quickInvoiceForm"><div class="grid g2"><div class="field"><label>Customer</label><input class="input" id="quickCustomer" required></div><div class="field"><label>Phone</label><input class="input" id="quickPhone"></div></div><div class="grid g2"><div class="field"><label>Total Amount</label><input class="input" id="quickAmount" type="number" min="1" required></div><div class="field"><label>Payment</label><select class="select" id="quickPayment"><option>Cash</option><option>Bank Transfer</option><option>JazzCash</option><option>Easypaisa</option><option>Card</option><option>Udhaar</option></select></div></div><button class="btn green">Save Invoice</button></form></div></div>
+
+<!-- PAYMENT MODAL -->
+<div class="modal" id="paymentModal"><div class="modal-box"><div class="modal-head"><h3>💵 Receive Khata Payment</h3><button class="close" onclick="closeModal('paymentModal')">×</button></div>
+<form id="paymentForm"><div class="field"><label>Customer</label><select class="select" id="paymentCustomer"></select></div><div class="grid g2"><div class="field"><label>Amount</label><input class="input" id="paymentAmount" type="number" min="1" required></div><div class="field"><label>Method</label><select class="select" id="paymentMethod"><option>Cash</option><option>Bank Transfer</option><option>JazzCash</option><option>Easypaisa</option><option>Card</option></select></div></div><div class="field"><label>Note</label><input class="input" id="paymentNote"></div><button class="btn green">Save Payment</button></form></div></div>
+
+<!-- STATEMENT MODAL -->
+<div class="modal" id="statementModal"><div class="modal-box"><div class="modal-head"><h3>📄 Customer Statement</h3><button class="close" onclick="closeModal('statementModal')">×</button></div>
+<div class="field"><label>Customer</label><select class="select" id="statementCustomer" onchange="renderStatementModal()"></select></div><div id="statementBody"></div><div class="actions" style="margin-top:12px"><button class="btn blue" onclick="printStatement()">🖨️ Print Statement</button><button class="btn" onclick="whatsappStatement()">💬 WhatsApp</button></div></div></div>
+
+<!-- CUSTOMER DETAIL MODAL -->
+<div class="modal" id="customerModal"><div class="modal-box"><div class="modal-head"><h3 id="customerModalTitle">Customer</h3><button class="close" onclick="closeModal('customerModal')">×</button></div><div id="customerDetail"></div></div></div>
+
+<div class="license-gate" id="licenseGate">
+  <div class="license-card">
+    <div class="license-logo">
+      <svg viewBox="0 0 64 64" width="72" height="72" xmlns="http://www.w3.org/2000/svg" aria-label="Digital Dokan logo"><defs><linearGradient id="gateDD" x1="8" y1="4" x2="56" y2="60" gradientUnits="userSpaceOnUse"><stop stop-color="#35e7ad"/><stop offset="1" stop-color="#079669"/></linearGradient></defs><rect x="3" y="3" width="58" height="58" rx="17" fill="#0a1712" stroke="#1d4938"/><path d="M14 27.5 32 13l18 14.5v22a3.5 3.5 0 0 1-3.5 3.5h-29A3.5 3.5 0 0 1 14 49.5v-22Z" fill="url(#ddLogo)"/><path d="M20 29h24v19H20z" fill="#f7fbf9"/><path d="M23.5 34h11M23.5 39h16M23.5 44h9" stroke="#60776c" stroke-width="2.4" stroke-linecap="round"/><path d="M42 31v15" stroke="#0a9b70" stroke-width="3" stroke-linecap="round"/><path d="M23 25c0-3.9 3.7-6.5 9-6.5s9 2.6 9 6.5" fill="none" stroke="#f7fbf9" stroke-width="3" stroke-linecap="round"/><circle cx="48.5" cy="17" r="5.5" fill="#0a1712" stroke="#35e7ad" stroke-width="2"/><path d="m46 17 1.8 1.8 3-3.3" fill="none" stroke="#35e7ad" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>
+    </div>
+    <span class="badge green">DIGITAL DOKAN PRO</span>
+    <h2 id="gateTitle">Welcome to Digital Dokan</h2>
+    <p id="gateText">Your first 7 days are free. After the trial, a Pro license is required to continue.</p>
+    <div class="trial-clock" id="trialClock">Starting your free trial…</div>
+    <div class="field"><label>Pro License Key</label><input class="input" id="licenseKey" placeholder="Enter your Pro key"></div>
+    <button class="btn green wide" onclick="activateLicense()">Activate Pro License</button>
+    <div class="tiny muted" style="margin-top:12px">This local version protects access on this browser. For a real commercial license, connect the app to your secure server.</div>
+  </div>
+</div>
+
+<div class="toast" id="toast"></div>
+
+<!-- PRINT AREA -->
+<div class="print-area" id="printArea"></div>
+<footer class="app-footer bg-[#080E0A] text-gray-300 border-t border-emerald-950/60 py-12 px-6"><div class="app-footer-grid"><div><a class="brand" href="./index.html"><span class="logo">DD</span><span><b style="color:#fff;font-size:18px">Digital Dokan</b><small style="display:block;color:#34d399">Smart POS • Khata • Inventory</small></span></a><p>Simple retail software for Pakistani businesses.</p></div><div><h4>Product</h4><a href="./index.html#features">Features</a><a href="./index.html#pricing">Pricing</a><a href="./mydokan2.html">Open App</a></div><div><h4>Company</h4><a href="./about.html">About Us</a><a href="./contact.html">Contact Us</a></div><div><h4>Support</h4><a href="mailto:dokanretailkhata@gmail.com" style="color:#34d399">dokanretailkhata@gmail.com</a></div></div><div class="copyright">© 2026 Digital Dokan. All rights reserved.</div></footer>
+
+<script>
+if(!localStorage.getItem('digital_dokan_auth_v1')){window.location.replace('./index.html?auth=signup')}
+const KEY='digital_dokan_v4';
+const LICENSE_KEY='digital_dokan_license_v1';
+const TRIAL_DAYS=7;
+const DEMO_PRO_KEY='DD-PRO-DEMO-2026';
+const defaults={
+ business:{name:'Digital Dokan',phone:'',whatsapp:'',address:'',footer:'Thank you for shopping with us!'},
+ invoice:1004,
+ customers:[
+   {id:'cus_ali',name:'Ali General Store',phone:'03001234567',opening:4200,address:'Main Bazaar'},
+   {id:'cus_sana',name:'Sana Kiryana',phone:'03007654321',opening:1850,address:'Model Town'},
+   {id:'cus_ahmed',name:'Ahmed Traders',phone:'03111222333',opening:0,address:'Railway Road'}
+ ],
+ products:[
+   {id:'prd_atta',name:'Atta 10kg',sku:'ATTA10',category:'Grocery',unit:'bag',buy:1200,sale:1450,stock:24,low:5},
+   {id:'prd_oil',name:'Cooking Oil 5L',sku:'OIL5L',category:'Grocery',unit:'bottle',buy:2200,sale:2550,stock:12,low:4},
+   {id:'prd_tea',name:'Tea 950g',sku:'TEA950',category:'Grocery',unit:'pack',buy:780,sale:920,stock:18,low:5}
+ ],
+ sales:[
+   {id:'sale_demo_1',invoice:'INV-1001',date:new Date().toISOString(),customerId:'cus_ali',customer:'Ali General Store',phone:'03001234567',items:[{id:'line_1',productId:'prd_atta',name:'Atta 10kg',price:1450,qty:2,total:2900}],subtotal:2900,discount:0,total:2900,paid:2900,due:0,payment:'Cash'},
+   {id:'sale_demo_2',invoice:'INV-1002',date:new Date(Date.now()-3600000).toISOString(),customerId:'cus_sana',customer:'Sana Kiryana',phone:'03007654321',items:[{id:'line_2',productId:'prd_oil',name:'Cooking Oil 5L',price:2550,qty:1,total:2550}],subtotal:2550,discount:0,total:2550,paid:1700,due:850,payment:'Partial'},
+   {id:'sale_demo_3',invoice:'INV-1003',date:new Date(Date.now()-7200000).toISOString(),customerId:'cus_ahmed',customer:'Ahmed Traders',phone:'03111222333',items:[{id:'line_3',productId:'prd_tea',name:'Tea 950g',price:920,qty:3,total:2760}],subtotal:2760,discount:0,total:2760,paid:2760,due:0,payment:'JazzCash'}
+ ],
+ khata:[
+   {id:'kht_demo_1',customerId:'cus_ali',amount:4200,type:'credit',ref:'OPEN',note:'Opening Balance',method:'',date:new Date().toISOString()},
+   {id:'kht_demo_2',customerId:'cus_sana',amount:1850,type:'credit',ref:'OPEN',note:'Opening Balance',method:'',date:new Date().toISOString()},
+   {id:'kht_demo_3',customerId:'cus_sana',amount:850,type:'credit',ref:'INV-1002',note:'Partial sale due',method:'Partial',date:new Date().toISOString()}
+ ],
+ purchases:[], expenses:[]
+};
+let db=loadDB(), cart=[], currentInvoice=null;
+if(!db.customers.length&&!db.sales.length){db=structuredClone(defaults);saveDB();}
+let access=loadAccess();
+
+function loadAccess(){
+  try{
+    const a=JSON.parse(localStorage.getItem(LICENSE_KEY)||'null');
+    if(a&&a.licensed)return a;
+    const start=a?.trialStart||Date.now();
+    const used={licensed:false,trialStart:start};
+    localStorage.setItem(LICENSE_KEY,JSON.stringify(used));
+    return used;
+  }catch(e){return {licensed:false,trialStart:Date.now()}}
+}
+function trialRemaining(){
+  if(access.licensed)return Infinity;
+  const end=Number(access.trialStart)+TRIAL_DAYS*86400000;
+  return Math.max(0,end-Date.now());
+}
+function hasAccess(){return access.licensed||trialRemaining()>0}
+function activateLicense(){
+  const key=document.getElementById('licenseKey').value.trim();
+  if(key===DEMO_PRO_KEY || /^DD-PRO-[A-Z0-9-]{6,}$/i.test(key)){
+    access={licensed:true,activatedAt:Date.now(),keyHint:key.slice(0,8)+'…'};
+    localStorage.setItem(LICENSE_KEY,JSON.stringify(access));
+    document.getElementById('licenseGate').classList.remove('show');
+    showToast('Digital Dokan Pro activated'); updateAccessUI();
+  }else alert('Invalid Pro License Key.');
+}
+function updateAccessUI(){
+  const pill=document.getElementById('trialPill'),clock=document.getElementById('trialClock'),gate=document.getElementById('licenseGate');
+  if(!pill)return;
+  if(access.licensed){pill.textContent='✓ Pro Active';pill.style.background='#0b2118';if(gate)gate.classList.remove('show');return}
+  const ms=trialRemaining(),days=Math.ceil(ms/86400000);
+  if(ms>0){pill.textContent=`Free Trial • ${days} day${days===1?'':'s'} left`;clock.textContent=`Your free trial ends in ${days} day${days===1?'':'s'}.`;gate.classList.remove('show')}
+  else{pill.textContent='Pro License Required';clock.textContent='Your 7-day free trial has ended. Activate Pro to continue.';document.getElementById('gateTitle').textContent='Your Free Trial Has Ended';document.getElementById('gateText').textContent='Digital Dokan Pro is now locked. Enter a valid Pro license key to continue.';gate.classList.add('show')}
+}
+
+function loadDB(){
+  try{
+    let saved=JSON.parse(localStorage.getItem(KEY)||'null');
+    if(!saved) saved=JSON.parse(localStorage.getItem('digital_dokan_v3')||'null');
+    return saved?mergeDB(saved):structuredClone(defaults);
+  }catch(e){return structuredClone(defaults)}
+}
+function mergeDB(s){
+  const d=structuredClone(defaults);
+  return {...d,...s,business:{...d.business,...(s.business||{})},
+    customers:Array.isArray(s.customers)?s.customers:[],
+    products:Array.isArray(s.products)?s.products:[],
+    sales:Array.isArray(s.sales)?s.sales:[],
+    khata:Array.isArray(s.khata)?s.khata:[],
+    purchases:Array.isArray(s.purchases)?s.purchases:[],
+    expenses:Array.isArray(s.expenses)?s.expenses:[]};
+}
+function saveDB(){localStorage.setItem(KEY,JSON.stringify(db))}
+function id(prefix){return prefix+'_'+Date.now().toString(36)+'_'+Math.random().toString(36).slice(2,7)}
+function money(n){return 'Rs. '+Number(n||0).toLocaleString('en-PK',{maximumFractionDigits:2})}
+function num(n){return Number(n||0)}
+function esc(s){return String(s??'').replace(/[&<>"']/g,m=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#039;'}[m]))}
+function dateISO(d=new Date()){return new Date(d).toISOString().slice(0,10)}
+function dateTime(d=new Date()){return new Date(d).toLocaleString('en-PK',{dateStyle:'medium',timeStyle:'short'})}
+function sameDay(iso,day){return String(iso).slice(0,10)===day}
+function showToast(msg){const t=document.getElementById('toast');t.textContent=msg;t.classList.add('show');clearTimeout(window.toastTimer);window.toastTimer=setTimeout(()=>t.classList.remove('show'),2600)}
+function openModal(id){document.getElementById(id).classList.add('open');populateSelects()}
+function closeModal(id){document.getElementById(id).classList.remove('open')}
+function switchView(v){
+  if(!hasAccess()){updateAccessUI();return;}
+  document.querySelectorAll('.view').forEach(x=>x.classList.remove('active'));
+  document.getElementById('view-'+v).classList.add('active');
+  document.querySelectorAll('.nav button').forEach(b=>b.classList.toggle('active',b.dataset.view===v));
+  const titles={pos:'Quick Billing / POS',dashboard:'Dashboard',sales:'Sales & Invoices',parties:'Customers & Khata',inventory:'Inventory & Stock',purchases:'Purchases & Suppliers',expenses:'Cash & Expenses',reports:'Reports',settings:'Settings & Backup'};
+  document.getElementById('pageTitle').textContent=titles[v];
+  document.getElementById('sidebar').classList.remove('open');document.getElementById('sidebarBackdrop').classList.remove('open');
+  refresh();
+}
+document.querySelectorAll('.nav button').forEach(b=>b.onclick=()=>switchView(b.dataset.view));
+document.getElementById('menuBtn').onclick=()=>{const side=document.getElementById('sidebar'),back=document.getElementById('sidebarBackdrop');side.classList.toggle('open');back.classList.toggle('open',side.classList.contains('open'));};
+document.getElementById('sidebarBackdrop').onclick=()=>{document.getElementById('sidebar').classList.remove('open');document.getElementById('sidebarBackdrop').classList.remove('open')};
+['salesDate','reportFrom','reportTo'].forEach(id=>{const el=document.getElementById(id);if(el){el.addEventListener('click',()=>{try{el.showPicker&&el.showPicker()}catch(e){}})}});
+
+function populateSelects(){
+  const opts=db.customers.map(c=>`<option value="${esc(c.id)}">${esc(c.name)} — ${money(customerBalance(c.id))}</option>`).join('');
+  ['paymentCustomer','statementCustomer'].forEach(id=>{const s=document.getElementById(id);if(s)s.innerHTML='<option value="">Select customer</option>'+opts});
+  document.getElementById('purchaseProduct').innerHTML='<option value="">Select product</option>'+db.products.map(p=>`<option value="${p.id}">${esc(p.name)} — ${money(p.sale)}</option>`).join('');
+  document.getElementById('customerList').innerHTML=db.customers.map(c=>`<option value="${esc(c.name)}"></option>`).join('');
+  document.getElementById('productList').innerHTML=db.products.map(p=>`<option value="${esc(p.name)}"></option>`).join('');
+}
+
+function customerByName(name){return db.customers.find(c=>c.name.toLowerCase()===String(name).trim().toLowerCase())}
+function customerBalance(cid){
+  const c=db.customers.find(x=>x.id===cid); if(!c)return 0;
+  let b=num(c.opening);
+  db.khata.filter(k=>k.customerId===cid).forEach(k=>b += k.type==='credit'?num(k.amount):-num(k.amount));
+  return b;
+}
+function ensureCustomer(name,phone=''){
+  name=String(name||'Walk-in Customer').trim()||'Walk-in Customer';
+  if(name.toLowerCase()==='walk-in customer')return null;
+  let c=customerByName(name);
+  if(!c){c={id:id('cus'),name,phone:phone||'',opening:0,address:''};db.customers.push(c)}
+  else if(phone&&!c.phone)c.phone=phone;
+  return c;
+}
+function addKhata(customerId,amount,type,ref='',note='',method=''){
+  db.khata.unshift({id:id('kht'),customerId,amount:num(amount),type,ref,note,method,date:new Date().toISOString()});
+}
+function getDueForSale(total,payment,paid){
+  if(payment==='Udhaar')return total;
+  if(payment==='Partial')return Math.max(0,total-num(paid));
+  return 0;
+}
+function stockForProduct(pid){const p=db.products.find(x=>x.id===pid);return p?num(p.stock):0}
+function productMatch(q){
+  q=String(q||'').trim().toLowerCase();
+  return db.products.find(p=>p.name.toLowerCase()===q||String(p.sku||'').toLowerCase()===q);
+}
+
+function addCartLine(){
+  const name=document.getElementById('lineName').value.trim(), typedPrice=num(document.getElementById('linePrice').value), qty=Math.max(1,num(document.getElementById('lineQty').value));
+  if(!name)return alert('Enter a product name or barcode.');
+  const p=productMatch(name);
+  let price=typedPrice||p?.sale||0;
+  if(price<=0)return alert('Enter a valid price or register this product first.');
+  if(p && qty>p.stock)return alert(`Only ${p.stock} ${p.unit||'units'} available in stock.`);
+  const existing=cart.find(x=>x.productId===p?.id && x.price===price);
+  if(existing){if(p && existing.qty+qty>p.stock)return alert('Quantity exceeds available stock.');existing.qty+=qty}
+  else cart.push({id:id('line'),productId:p?.id||null,name:p?.name||name,price,qty,cost:p?num(p.buy):0,unit:p?.unit||'pcs'});
+  document.getElementById('lineName').value='';document.getElementById('linePrice').value='';document.getElementById('lineQty').value=1;renderCart();
+}
+function cartSubtotal(){return cart.reduce((a,x)=>a+x.price*x.qty,0)}
+function cartTotal(){return Math.max(0,cartSubtotal()-num(document.getElementById('posDiscount').value))}
+function updateTotals(){
+  const total=cartTotal();document.getElementById('cartTotal').textContent=money(total);
+  const pay=document.getElementById('posPayment').value;
+  document.getElementById('partialFields').style.display=pay==='Partial'?'grid':'none';
+  document.getElementById('posDue').textContent=money(Math.max(0,total-num(document.getElementById('posPaid').value)));
+}
+document.getElementById('posPayment').onchange=updateTotals;
+function renderCart(){
+  const body=document.getElementById('cartBody');
+  if(!cart.length){body.innerHTML='<tr><td colspan="5" class="empty">No items added to current bill.</td></tr>';updateTotals();return}
+  body.innerHTML=cart.map(x=>`<tr><td><b>${esc(x.name)}</b></td><td>${money(x.price)}</td><td>${x.qty}</td><td class="green-text"><b>${money(x.price*x.qty)}</b></td><td class="right"><button class="btn sm red" onclick="removeCart('${x.id}')">×</button></td></tr>`).join('');
+  updateTotals();
+}
+function removeCart(x){cart=cart.filter(i=>i.id!==x);renderCart()}
+function clearCart(){cart=[];document.getElementById('posDiscount').value=0;document.getElementById('posPaid').value=0;renderCart()}
+function setUdhaar(){document.getElementById('posPayment').value='Udhaar';updateTotals()}
+function resetPOS(){clearCart();document.getElementById('posCustomer').value='';document.getElementById('posPhone').value='';document.getElementById('invoiceTag').textContent='INV-'+db.invoice}
+
+function checkout(mode='save'){
+  if(!hasAccess()){updateAccessUI();return;}
+  if(!cart.length)return alert('Add at least one item.');
+  const name=document.getElementById('posCustomer').value.trim()||'Walk-in Customer';
+  const phone=document.getElementById('posPhone').value.trim();
+  const payment=document.getElementById('posPayment').value,total=cartTotal(),discount=num(document.getElementById('posDiscount').value);
+  const paid=payment==='Udhaar'?0:payment==='Partial'?Math.min(total,num(document.getElementById('posPaid').value)):total;
+  const due=getDueForSale(total,payment,paid);
+  if(payment==='Partial'&&paid<=0)return alert('Enter the paid amount.');
+  const customer=ensureCustomer(name,phone);
+  if(due>0&&!customer)return alert('Udhaar requires a registered customer.');
+  for(const line of cart){if(line.productId){const p=db.products.find(x=>x.id===line.productId);if(!p||p.stock<line.qty)return alert(`Insufficient stock for ${line.name}.`)}}
+  const sale={id:id('sale'),invoice:'INV-'+db.invoice++,date:new Date().toISOString(),customerId:customer?.id||null,customer:name,phone,items:cart.map(x=>({...x,total:x.price*x.qty,cost:x.cost||0})),subtotal:cartSubtotal(),discount,total,paid,due,payment};
+  db.sales.unshift(sale);
+  sale.items.forEach(line=>{if(line.productId){const p=db.products.find(x=>x.id===line.productId);p.stock-=line.qty}});
+  if(customer&&due>0)addKhata(customer.id,due,'credit',sale.invoice,`Sale ${sale.invoice}`,payment);
+  if(customer&&paid>0&&due>0)addKhata(customer.id,paid,'payment',sale.invoice,`Paid against ${sale.invoice}`,payment);
+  saveDB();currentInvoice=sale;showToast(`${sale.invoice} saved successfully`);
+  if(mode==='whatsapp')sendInvoiceWhatsApp(sale);
+  refresh();resetPOS();
+}
+function printCurrentInvoice(){
+  if(!cart.length)return alert('Add items to the bill first.');
+  const temp={invoice:'DRAFT',date:new Date().toISOString(),customer:document.getElementById('posCustomer').value||'Walk-in Customer',phone:document.getElementById('posPhone').value,items:cart.map(x=>({...x,total:x.price*x.qty,cost:x.cost||0})),subtotal:cartSubtotal(),discount:num(document.getElementById('posDiscount').value),total:cartTotal(),paid:document.getElementById('posPayment').value==='Udhaar'?0:cartTotal(),due:document.getElementById('posPayment').value==='Udhaar'?cartTotal():0,payment:document.getElementById('posPayment').value};
+  printInvoice(temp);
+}
+function invoiceHTML(s){
+  const b=db.business;
+  return `<div class="invoice-print" style="max-width:760px;margin:20px auto;font-family:Arial,sans-serif">
+  <div style="display:flex;justify-content:space-between;border-bottom:2px solid #111;padding-bottom:14px">
+  <div><h1 style="margin:0">${esc(b.name)}</h1><div>${esc(b.address)}</div><div>${esc(b.phone)}</div></div>
+  <div style="text-align:right"><b>INVOICE</b><div>${esc(s.invoice)}</div><div>${dateTime(s.date)}</div></div></div>
+  <div style="margin:18px 0"><b>Customer:</b> ${esc(s.customer)} ${s.phone?`• ${esc(s.phone)}`:''}</div>
+  <table style="width:100%;border-collapse:collapse"><thead><tr><th style="text-align:left;border-bottom:1px solid #aaa;padding:8px">Item</th><th style="padding:8px">Qty</th><th style="padding:8px">Price</th><th style="text-align:right;padding:8px">Total</th></tr></thead><tbody>
+  ${s.items.map(i=>`<tr><td style="padding:8px;border-bottom:1px solid #ddd">${esc(i.name)}</td><td style="padding:8px;text-align:center;border-bottom:1px solid #ddd">${i.qty}</td><td style="padding:8px;text-align:center;border-bottom:1px solid #ddd">${money(i.price)}</td><td style="padding:8px;text-align:right;border-bottom:1px solid #ddd">${money(i.total)}</td></tr>`).join('')}
+  </tbody></table><div style="margin-left:auto;max-width:300px;margin-top:15px">
+  <div style="display:flex;justify-content:space-between"><span>Subtotal</span><b>${money(s.subtotal)}</b></div>
+  <div style="display:flex;justify-content:space-between"><span>Discount</span><b>${money(s.discount)}</b></div>
+  <div style="display:flex;justify-content:space-between;font-size:20px;margin-top:8px;border-top:2px solid #111;padding-top:8px"><span>Total</span><b>${money(s.total)}</b></div>
+  <div style="display:flex;justify-content:space-between"><span>Paid</span><b>${money(s.paid)}</b></div>
+  <div style="display:flex;justify-content:space-between"><span>Udhaar</span><b>${money(s.due)}</b></div></div>
+  <p style="margin-top:30px;text-align:center">${esc(b.footer)}</p></div>`;
+}
+function printInvoice(s){document.getElementById('printArea').innerHTML=invoiceHTML(s);window.print();document.getElementById('printArea').innerHTML=''}
+function sendInvoiceWhatsApp(s){
+  if(!s.phone)return alert('Customer phone/WhatsApp number is missing.');
+  const n=s.phone.replace(/\D/g,'').replace(/^0/,'92');
+  const items=s.items.map(i=>`${i.name} x${i.qty} = Rs. ${Number(i.total).toLocaleString()}`).join('\n');
+  const text=`Assalam-o-Alaikum ${s.customer} 👋\n\n*${db.business.name}*\nInvoice: *${s.invoice}*\n\n${items}\n\n*Total: Rs. ${s.total.toLocaleString()}*\nPaid: Rs. ${s.paid.toLocaleString()}\nUdhaar: Rs. ${s.due.toLocaleString()}\n\n${db.business.footer}`;
+  window.open(`https://wa.me/${n}?text=${encodeURIComponent(text)}`,'_blank');
+}
+
+function renderDashboard(){
+  const today=dateISO(),salesToday=db.sales.filter(s=>sameDay(s.date,today));
+  const sales=salesToday.reduce((a,s)=>a+s.total,0),paid=salesToday.reduce((a,s)=>a+s.paid,0),due=salesToday.reduce((a,s)=>a+s.due,0);
+  const cogs=salesToday.reduce((a,s)=>a+s.items.reduce((x,i)=>{const p=db.products.find(p=>p.id===i.productId);return x+num(i.cost)*i.qty},0),0);
+  const exp=db.expenses.filter(e=>sameDay(e.date,today)).reduce((a,e)=>a+e.amount,0),profit=sales-cogs-exp;
+  document.getElementById('dashboardStats').innerHTML=[
+    ['TODAY SALES',money(sales),'green-text'],['CASH / PAYMENTS',money(paid),'blue-text'],['UDHAAR TODAY',money(due),'amber-text'],['EST. PROFIT TODAY',money(profit),'purple-text']
+  ].map(x=>`<div class="stat"><div class="stat-label">${x[0]}</div><div class="stat-value ${x[2]}">${x[1]}</div><div class="tiny muted">${salesToday.length} invoice(s) today</div></div>`).join('');
+  const balances=db.customers.map(c=>({c,b:customerBalance(c.id)})).filter(x=>x.b>0).sort((a,b)=>b.b-a.b);
+  document.getElementById('dashboardSnapshot').innerHTML=`<div class="kpi-row">
+  <div class="mini-kpi">Receivable<b class="red-text">${money(balances.reduce((a,x)=>a+x.b,0))}</b></div>
+  <div class="mini-kpi">Customers<b>${db.customers.length}</b></div><div class="mini-kpi">Products<b>${db.products.length}</b></div></div>
+  <div style="margin-top:16px"><div class="small muted">Invoices this month</div><b style="font-size:22px">${db.sales.filter(s=>s.date.slice(0,7)===today.slice(0,7)).length}</b></div>`;
+  renderBars('salesChart',7);
+  document.getElementById('lowStock').innerHTML=db.products.filter(p=>num(p.stock)<=num(p.low)).slice(0,6).map(p=>`<div style="margin-bottom:11px"><div class="flex between small"><b>${esc(p.name)}</b><span class="red-text">${p.stock} left</span></div><div class="progress" style="margin-top:5px"><i style="width:${Math.min(100,p.low?Math.max(8,p.stock/p.low*100):100)}%"></i></div></div>`).join('')||'<div class="empty">All stock levels look good.</div>';
+  const topC=topCustomers();document.getElementById('topCustomers').innerHTML=topC.map(x=>`<div class="flex between small" style="padding:8px 0;border-bottom:1px solid var(--line)"><span>${esc(x.name)}</span><b>${money(x.total)}</b></div>`).join('')||'<div class="empty">No sales yet.</div>';
+  const topP=topProducts();document.getElementById('topProducts').innerHTML=topP.map(x=>`<div class="flex between small" style="padding:8px 0;border-bottom:1px solid var(--line)"><span>${esc(x.name)}</span><b>${x.qty} sold</b></div>`).join('')||'<div class="empty">No product sales yet.</div>';
+}
+function renderBars(containerId,days){
+  const el=document.getElementById(containerId), arr=[];
+  for(let i=days-1;i>=0;i--){const d=new Date();d.setDate(d.getDate()-i);const iso=dateISO(d);arr.push({iso,total:db.sales.filter(s=>sameDay(s.date,iso)).reduce((a,s)=>a+s.total,0),label:d.toLocaleDateString('en-US',{weekday:'short'})})}
+  const max=Math.max(1,...arr.map(x=>x.total));
+  el.innerHTML=arr.map(x=>`<div class="bar-wrap"><div class="bar-value">${x.total?Math.round(x.total).toLocaleString():'0'}</div><div class="bar" style="height:${Math.max(2,x.total/max*82)}%"></div><div class="bar-label">${x.label}</div></div>`).join('');
+}
+function topCustomers(){const m={};db.sales.forEach(s=>{if(s.customerId)m[s.customerId]=(m[s.customerId]||0)+s.total});return Object.entries(m).map(([id,total])=>({name:db.customers.find(c=>c.id===id)?.name||'Unknown',total})).sort((a,b)=>b.total-a.total).slice(0,5)}
+function topProducts(){const m={};db.sales.forEach(s=>s.items.forEach(i=>{const key=i.productId||i.name;m[key]=(m[key]||{name:i.name,qty:0});m[key].qty+=i.qty}));return Object.values(m).sort((a,b)=>b.qty-a.qty).slice(0,5)}
+
+function renderSales(){
+  const q=document.getElementById('salesSearch').value.toLowerCase(),d=document.getElementById('salesDate').value;
+  const arr=db.sales.filter(s=>(!d||sameDay(s.date,d))&&(!q||`${s.invoice} ${s.customer} ${s.phone} ${s.payment}`.toLowerCase().includes(q)));
+  document.getElementById('salesBody').innerHTML=arr.map(s=>`<tr><td>${dateTime(s.date)}</td><td><b class="green-text">${s.invoice}</b></td><td>${esc(s.customer)}</td><td>${s.items.length}</td><td><b>${money(s.total)}</b></td><td>${money(s.paid)}</td><td class="${s.due?'red-text':''}">${money(s.due)}</td><td><span class="badge ${s.due?'red':'green'}">${esc(s.payment)}</span></td><td><div class="actions"><button class="btn sm" onclick="printSale('${s.id}')">Print</button><button class="btn sm" onclick="viewSale('${s.id}')">View</button></div></td></tr>`).join('')||'<tr><td colspan="9" class="empty">No sales found.</td></tr>';
+}
+function printSale(id){const s=db.sales.find(x=>x.id===id);if(s)printInvoice(s)}
+function viewSale(id){const s=db.sales.find(x=>x.id===id);if(!s)return;document.getElementById('customerModalTitle').textContent=s.invoice;document.getElementById('customerDetail').innerHTML=invoiceHTML(s);openModal('customerModal')}
+
+function renderParties(){
+  const q=document.getElementById('partySearch').value.toLowerCase();
+  const arr=db.customers.filter(c=>`${c.name} ${c.phone}`.toLowerCase().includes(q));
+  document.getElementById('partiesGrid').innerHTML=arr.map(c=>{const b=customerBalance(c.id),sales=db.sales.filter(s=>s.customerId===c.id);return `<div class="party-card"><div class="flex between center"><div><div class="party-name">${esc(c.name)}</div><div class="tiny muted">${esc(c.phone||'No phone')}</div></div><span class="badge ${b>0?'red':'green'}">${b>0?'Receivable':'Clear'}</span></div><div class="balance ${b>0?'red-text':'green-text'}">${money(b)}</div><div class="tiny muted">${sales.length} invoice(s)</div><div class="actions" style="margin-top:10px"><button class="btn sm" onclick="openCustomer('${c.id}')">View Ledger</button><button class="btn sm" onclick="prefillPayment('${c.id}')">Receive</button><button class="btn sm" onclick="whatsappCustomer('${c.id}')">WhatsApp</button></div></div>`}).join('')||'<div class="empty" style="grid-column:1/-1">No customers found.</div>';
+}
+function openCustomer(cid){
+  const c=db.customers.find(x=>x.id===cid),b=customerBalance(cid),logs=db.khata.filter(k=>k.customerId===cid),sales=db.sales.filter(s=>s.customerId===cid);
+  document.getElementById('customerModalTitle').textContent=c.name+' — Khata';
+  document.getElementById('customerDetail').innerHTML=`<div class="kpi-row"><div class="mini-kpi">Balance<b class="${b>0?'red-text':'green-text'}">${money(b)}</b></div><div class="mini-kpi">Total Sales<b>${money(sales.reduce((a,s)=>a+s.total,0))}</b></div><div class="mini-kpi">Phone<b>${esc(c.phone||'—')}</b></div></div>
+  <div class="actions" style="margin:12px 0"><button class="btn sm" onclick="prefillPayment('${c.id}')">+ Receive Payment</button><button class="btn sm" onclick="whatsappCustomer('${c.id}')">💬 Send Khata</button><button class="btn sm blue" onclick="printCustomerStatement('${c.id}')">🖨️ Print</button></div>
+  <div style="overflow:auto"><table class="table"><thead><tr><th>Date</th><th>Reference</th><th>Type</th><th>Note</th><th>Amount</th><th>Balance</th></tr></thead><tbody>${renderLedgerRows(c,logs)}</tbody></table></div>`;
+  openModal('customerModal');
+}
+function renderLedgerRows(c,logs){
+  let bal=num(c.opening);const rows=[{date:c.opening?'Opening Balance':'',ref:'OPEN',type:'credit',note:'Opening Balance',amount:num(c.opening)}];
+  [...logs].sort((a,b)=>new Date(a.date)-new Date(b.date)).forEach(k=>{bal+=k.type==='credit'?num(k.amount):-num(k.amount);rows.push({...k,balance:bal})});
+  return rows.reverse().map(k=>`<tr><td>${k.date?dateTime(k.date):'—'}</td><td>${esc(k.ref||'—')}</td><td><span class="badge ${k.type==='credit'?'red':'green'}">${k.type==='credit'?'Udhaar':'Payment'}</span></td><td>${esc(k.note||'')}</td><td class="${k.type==='credit'?'red-text':'green-text'}"><b>${k.type==='credit'?'+':'-'} ${money(k.amount)}</b></td><td><b>${money(k.balance??customerBalance(c.id))}</b></td></tr>`).join('');
+}
+function prefillPayment(cid){closeModal('customerModal');populateSelects();document.getElementById('paymentCustomer').value=cid;openModal('paymentModal')}
+function whatsappCustomer(cid){
+  const c=db.customers.find(x=>x.id===cid);if(!c?.phone)return alert('Customer WhatsApp number is missing.');
+  const b=customerBalance(cid),logs=db.khata.filter(k=>k.customerId===cid).slice(0,8),text=`Assalam-o-Alaikum ${c.name} 👋\n\n*${db.business.name} — Khata Statement*\nCurrent Balance: *Rs. ${b.toLocaleString()}*\n\nRecent activity:\n${logs.map(k=>`${k.type==='credit'?'+ Udhaar':'- Payment'} Rs. ${num(k.amount).toLocaleString()} — ${k.note||''}`).join('\n')}\n\nThank you.`;
+  window.open(`https://wa.me/${c.phone.replace(/\D/g,'').replace(/^0/,'92')}?text=${encodeURIComponent(text)}`,'_blank');
+}
+
+function renderInventory(){
+  const q=document.getElementById('itemSearch').value.toLowerCase();
+  const arr=db.products.filter(p=>`${p.name} ${p.sku} ${p.category}`.toLowerCase().includes(q));
+  document.getElementById('inventoryBody').innerHTML=arr.map(p=>`<tr><td><b>${esc(p.name)}</b><div class="tiny muted">${esc(p.unit||'pcs')}</div></td><td>${esc(p.sku||'—')}</td><td>${esc(p.category||'General')}</td><td>${money(p.buy)}</td><td class="green-text"><b>${money(p.sale)}</b></td><td class="${p.stock<=p.low?'red-text':'green-text'}"><b>${p.stock}</b></td><td>${p.low}</td><td><button class="btn sm" onclick="editProduct('${p.id}')">Edit</button></td></tr>`).join('')||'<tr><td colspan="8" class="empty">No products found.</td></tr>';
+}
+function editProduct(pid){
+  const p=db.products.find(x=>x.id===pid);if(!p)return;
+  document.getElementById('itemName').value=p.name;document.getElementById('itemSku').value=p.sku||'';document.getElementById('itemCategory').value=p.category||'';document.getElementById('itemUnit').value=p.unit||'pcs';document.getElementById('itemBuy').value=p.buy;document.getElementById('itemSale').value=p.sale;document.getElementById('itemStock').value=p.stock;document.getElementById('itemLow').value=p.low;
+  document.getElementById('itemForm').dataset.edit=pid;openModal('itemModal');
+}
+
+function renderPurchases(){
+  const suppliers={};db.purchases.forEach(p=>suppliers[p.supplier]=(suppliers[p.supplier]||0)+p.total);
+  document.getElementById('supplierList').innerHTML=Object.entries(suppliers).map(([n,v])=>`<div class="flex between small" style="padding:8px 0;border-bottom:1px solid var(--line)"><span>${esc(n)}</span><b>${money(v)}</b></div>`).join('')||'<div class="empty">No suppliers yet.</div>';
+  document.getElementById('purchaseBody').innerHTML=db.purchases.map(p=>`<tr><td>${dateTime(p.date)}</td><td>${esc(p.supplier)}</td><td>${esc(p.invoice||'—')}</td><td>${esc(p.productName)}</td><td>${p.qty}</td><td>${money(p.total)}</td><td>${esc(p.payment)}</td></tr>`).join('')||'<tr><td colspan="7" class="empty">No purchases recorded.</td></tr>';
+}
+function renderExpenses(){
+  const month=new Date().toISOString().slice(0,7),total=db.expenses.filter(e=>e.date.slice(0,7)===month).reduce((a,e)=>a+e.amount,0);
+  document.getElementById('expenseTotal').textContent=money(total);
+  document.getElementById('expenseBody').innerHTML=db.expenses.map(e=>`<tr><td>${dateTime(e.date)}</td><td>${esc(e.category)}</td><td>${esc(e.note)}</td><td class="red-text"><b>${money(e.amount)}</b></td><td><button class="btn sm red" onclick="deleteExpense('${e.id}')">Delete</button></td></tr>`).join('')||'<tr><td colspan="5" class="empty">No expenses recorded.</td></tr>';
+}
+function renderReports(){
+  const from=document.getElementById('reportFrom').value,to=document.getElementById('reportTo').value;
+  const sales=db.sales.filter(s=>(!from||s.date.slice(0,10)>=from)&&(!to||s.date.slice(0,10)<=to));
+  const total=sales.reduce((a,s)=>a+s.total,0),paid=sales.reduce((a,s)=>a+s.paid,0),due=sales.reduce((a,s)=>a+s.due,0);
+  const cogs=sales.reduce((a,s)=>a+s.items.reduce((x,i)=>{const p=db.products.find(p=>p.id===i.productId);return x+num(i.cost)*i.qty},0),0);
+  const exp=db.expenses.filter(e=>(!from||e.date.slice(0,10)>=from)&&(!to||e.date.slice(0,10)<=to)).reduce((a,e)=>a+e.amount,0);
+  const profit=total-cogs-exp;
+  document.getElementById('reportCards').innerHTML=[['Sales',money(total),'green-text'],['Collected',money(paid),'blue-text'],['Receivable',money(due),'red-text'],['Est. Profit',money(profit),'purple-text']].map(x=>`<div class="stat"><div class="stat-label">${x[0]}</div><div class="stat-value ${x[2]}">${x[1]}</div></div>`).join('');
+  const pm={};sales.forEach(s=>pm[s.payment]=(pm[s.payment]||0)+s.paid);
+  document.getElementById('paymentReport').innerHTML=Object.entries(pm).map(([k,v])=>`<div class="flex between small" style="padding:10px 0;border-bottom:1px solid var(--line)"><span>${esc(k)}</span><b>${money(v)}</b></div>`).join('')||'<div class="empty">No data for selected period.</div>';
+  renderReportBars(sales);
+}
+function renderReportBars(sales){
+  const days=[];for(let i=6;i>=0;i--){const d=new Date();d.setDate(d.getDate()-i);const iso=dateISO(d);days.push({iso,label:d.toLocaleDateString('en-US',{weekday:'short'}),total:sales.filter(s=>sameDay(s.date,iso)).reduce((a,s)=>a+s.total,0)})}
+  const max=Math.max(1,...days.map(x=>x.total));document.getElementById('reportDayChart').innerHTML=days.map(x=>`<div class="bar-wrap"><div class="bar-value">${Math.round(x.total).toLocaleString()}</div><div class="bar" style="height:${Math.max(2,x.total/max*82)}%"></div><div class="bar-label">${x.label}</div></div>`).join('');
+}
+
+function saveSettings(){
+  db.business={name:document.getElementById('setBusinessName').value.trim()||'Digital Dokan',phone:document.getElementById('setBusinessPhone').value.trim(),whatsapp:document.getElementById('setBusinessWhatsApp').value.trim(),address:document.getElementById('setBusinessAddress').value.trim(),footer:document.getElementById('setInvoiceFooter').value.trim()};
+  saveDB();showToast('Business settings saved');
+}
+function loadSettings(){document.getElementById('setBusinessName').value=db.business.name;document.getElementById('setBusinessPhone').value=db.business.phone;document.getElementById('setBusinessWhatsApp').value=db.business.whatsapp;document.getElementById('setBusinessAddress').value=db.business.address;document.getElementById('setInvoiceFooter').value=db.business.footer}
+function backupData(){const blob=new Blob([JSON.stringify(db,null,2)],{type:'application/json'}),a=document.createElement('a');a.href=URL.createObjectURL(blob);a.download=`digital-dokan-backup-${dateISO()}.json`;a.click();URL.revokeObjectURL(a.href)}
+function restoreData(e){const file=e.target.files[0];if(!file)return;const r=new FileReader();r.onload=()=>{try{db=mergeDB(JSON.parse(r.result));saveDB();refresh();showToast('Backup restored successfully')}catch(err){alert('Invalid backup file.')}};r.readAsText(file);e.target.value=''}
+function resetAll(){if(confirm('Delete ALL Digital Dokan data from this browser? Download a backup first.')){localStorage.removeItem(KEY);db=structuredClone(defaults);cart=[];refresh();showToast('All local data deleted')}}
+function exportCSV(type){
+  let rows=[];
+  if(type==='sales')rows=[['Date','Invoice','Customer','Phone','Total','Paid','Due','Payment'],...db.sales.map(s=>[dateTime(s.date),s.invoice,s.customer,s.phone,s.total,s.paid,s.due,s.payment])];
+  if(type==='khata')rows=[['Date','Customer','Type','Amount','Reference','Note','Method'],...db.khata.map(k=>[dateTime(k.date),db.customers.find(c=>c.id===k.customerId)?.name||'',k.type,k.amount,k.ref,k.note,k.method])];
+  if(type==='inventory')rows=[['Product','SKU','Category','Buy','Sale','Stock','Low At'],...db.products.map(p=>[p.name,p.sku,p.category,p.buy,p.sale,p.stock,p.low])];
+  if(type==='purchases')rows=[['Date','Supplier','Invoice','Product','Qty','Total','Payment'],...db.purchases.map(p=>[dateTime(p.date),p.supplier,p.invoice,p.productName,p.qty,p.total,p.payment])];
+  if(type==='expenses')rows=[['Date','Category','Note','Amount'],...db.expenses.map(e=>[dateTime(e.date),e.category,e.note,e.amount])];
+  const csv=rows.map(r=>r.map(v=>`"${String(v??'').replace(/"/g,'""')}"`).join(',')).join('\n'),blob=new Blob([csv],{type:'text/csv'}),a=document.createElement('a');a.href=URL.createObjectURL(blob);a.download=`digital-dokan-${type}-${dateISO()}.csv`;a.click();URL.revokeObjectURL(a.href);
+}
+function printCustomerStatement(cid){
+  const c=db.customers.find(x=>x.id===cid),b=customerBalance(cid),logs=db.khata.filter(k=>k.customerId===cid);
+  document.getElementById('printArea').innerHTML=`<div style="max-width:760px;margin:20px auto;font-family:Arial"><h1>${esc(db.business.name)}</h1><h2>Khata Statement</h2><p><b>Customer:</b> ${esc(c.name)}<br><b>Phone:</b> ${esc(c.phone||'—')}<br><b>Current Balance:</b> ${money(b)}</p><table style="width:100%;border-collapse:collapse"><tr><th style="text-align:left;border-bottom:1px solid #111;padding:8px">Date</th><th>Type</th><th>Reference</th><th style="text-align:right">Amount</th></tr>${logs.map(k=>`<tr><td style="padding:8px;border-bottom:1px solid #ddd">${dateTime(k.date)}</td><td style="padding:8px;border-bottom:1px solid #ddd">${k.type}</td><td style="padding:8px;border-bottom:1px solid #ddd">${esc(k.ref||'')}</td><td style="text-align:right;padding:8px;border-bottom:1px solid #ddd">${money(k.amount)}</td></tr>`).join('')}</table></div>`;window.print();document.getElementById('printArea').innerHTML='';
+}
+function printStatement(){const cid=document.getElementById('statementCustomer').value;if(cid)printCustomerStatement(cid)}
+function renderStatementModal(){const cid=document.getElementById('statementCustomer').value;if(!cid){document.getElementById('statementBody').innerHTML='';return}const c=db.customers.find(x=>x.id===cid),b=customerBalance(cid);document.getElementById('statementBody').innerHTML=`<div class="total-box"><span class="muted small">${esc(c.name)} current balance</span><div class="total-number ${b>0?'red-text':''}">${money(b)}</div></div>`}
+function whatsappStatement(){const cid=document.getElementById('statementCustomer').value;if(cid)whatsappCustomer(cid)}
+
+document.getElementById('partyForm').onsubmit=e=>{e.preventDefault();const c={id:id('cus'),name:document.getElementById('partyName').value.trim(),phone:document.getElementById('partyPhone').value.trim(),opening:num(document.getElementById('partyOpening').value),address:document.getElementById('partyAddress').value.trim()};if(customerByName(c.name))return alert('Customer already exists.');db.customers.push(c);if(c.opening)addKhata(c.id,c.opening,'credit','OPEN','Opening Balance');saveDB();e.target.reset();closeModal('partyModal');refresh();showToast('Customer added')}
+
+document.getElementById('itemForm').onsubmit=e=>{e.preventDefault();const data={name:document.getElementById('itemName').value.trim(),sku:document.getElementById('itemSku').value.trim(),category:document.getElementById('itemCategory').value.trim()||'General',unit:document.getElementById('itemUnit').value,buy:num(document.getElementById('itemBuy').value),sale:num(document.getElementById('itemSale').value),stock:num(document.getElementById('itemStock').value),low:num(document.getElementById('itemLow').value)};if(data.sale<=0)return alert('Sale price must be greater than zero.');const edit=e.target.dataset.edit;if(edit){Object.assign(db.products.find(p=>p.id===edit),data);delete e.target.dataset.edit;showToast('Product updated')}else{if(data.sku&&db.products.some(p=>p.sku===data.sku))return alert('SKU already exists.');db.products.push({id:id('prd'),...data});showToast('Product added')}saveDB();e.target.reset();document.getElementById('itemLow').value=5;closeModal('itemModal');refresh()}
+
+document.getElementById('quickInvoiceForm').onsubmit=e=>{e.preventDefault();const name=document.getElementById('quickCustomer').value.trim(),phone=document.getElementById('quickPhone').value.trim(),amount=num(document.getElementById('quickAmount').value),payment=document.getElementById('quickPayment').value,c=ensureCustomer(name,phone),due=payment==='Udhaar'?amount:0,paid=amount-due,s={id:id('sale'),invoice:'INV-'+db.invoice++,date:new Date().toISOString(),customerId:c?.id||null,customer:name,phone,items:[{id:id('line'),productId:null,name:'Quick Invoice',price:amount,qty:1,total:amount}],subtotal:amount,discount:0,total:amount,paid,due,payment};db.sales.unshift(s);if(c&&due)addKhata(c.id,due,'credit',s.invoice,'Quick Invoice');saveDB();closeModal('invoiceModal');e.target.reset();refresh();showToast('Quick invoice saved')}
+
+document.getElementById('paymentForm').onsubmit=e=>{e.preventDefault();const cid=document.getElementById('paymentCustomer').value,amount=num(document.getElementById('paymentAmount').value);if(!cid||amount<=0)return alert('Select customer and amount.');const b=customerBalance(cid);if(amount>b&&b>0&&!confirm(`Payment is ${money(amount)} while current due is ${money(b)}. Continue?`))return;addKhata(cid,amount,'payment','PAY-'+Date.now(),document.getElementById('paymentNote').value||'Payment Received',document.getElementById('paymentMethod').value);saveDB();e.target.reset();closeModal('paymentModal');refresh();showToast('Payment received')}
+
+document.getElementById('purchaseForm').onsubmit=e=>{e.preventDefault();const pid=document.getElementById('purchaseProduct').value,p=db.products.find(x=>x.id===pid),qty=num(document.getElementById('purchaseQty').value),price=num(document.getElementById('purchasePrice').value);if(!p||qty<=0||price<0)return alert('Select product and enter valid quantity/price.');p.stock+=qty;p.buy=price;db.purchases.unshift({id:id('pur'),date:new Date().toISOString(),supplier:document.getElementById('purchaseSupplier').value.trim(),invoice:document.getElementById('purchaseInvoice').value.trim(),productId:pid,productName:p.name,qty,total:qty*price,payment:document.getElementById('purchasePayment').value});saveDB();e.target.reset();refresh();showToast('Purchase saved and stock updated')}
+
+document.getElementById('expenseForm').onsubmit=e=>{e.preventDefault();db.expenses.unshift({id:id('exp'),date:new Date().toISOString(),category:document.getElementById('expenseCategory').value,note:document.getElementById('expenseNote').value.trim(),amount:num(document.getElementById('expenseAmount').value)});saveDB();e.target.reset();refresh();showToast('Expense saved')}
+function deleteExpense(id){if(confirm('Delete this expense?')){db.expenses=db.expenses.filter(e=>e.id!==id);saveDB();refresh()}}
+
+document.getElementById('posCustomer').addEventListener('input',()=>{
+  const c=customerByName(document.getElementById('posCustomer').value);if(c)document.getElementById('posPhone').value=c.phone||'';
+  renderPosKhata();
+});
+function renderPosKhata(){
+  const c=customerByName(document.getElementById('posCustomer').value);
+  if(!c){document.getElementById('posKhataSnapshot').innerHTML='<div class="empty">Select a registered customer to view live balance.</div>';return}
+  const b=customerBalance(c.id),logs=db.khata.filter(k=>k.customerId===c.id).slice(0,5);
+  document.getElementById('posKhataSnapshot').innerHTML=`<div class="flex between center"><div><b style="font-size:15px">${esc(c.name)}</b><div class="tiny muted">${esc(c.phone||'No phone')}</div></div><span class="badge ${b>0?'red':'green'}">${b>0?'Due':'Clear'}</span></div><div class="balance ${b>0?'red-text':'green-text'}">${money(b)}</div><div class="tiny muted">Current receivable balance</div>`;
+  document.getElementById('recentKhataList').innerHTML=logs.map(k=>`<div class="flex between" style="padding:7px 0;border-bottom:1px solid var(--line)"><span>${k.type==='credit'?'Udhaar':'Payment'}</span><b class="${k.type==='credit'?'red-text':'green-text'}">${k.type==='credit'?'+':'-'}${money(k.amount)}</b></div>`).join('')||'<div class="muted">No activity.</div>';
+}
+function renderRecentSales(){const arr=db.sales.slice(0,6);document.getElementById('recentSales').innerHTML=arr.map(s=>`<div class="flex between center" style="padding:10px 0;border-bottom:1px solid var(--line)"><div><b>${esc(s.invoice)}</b> <span class="muted">• ${esc(s.customer)}</span><div class="tiny muted">${dateTime(s.date)}</div></div><div class="right"><b>${money(s.total)}</b><div class="tiny ${s.due?'red-text':'green-text'}">${s.due?money(s.due)+' due':'Paid'}</div></div></div>`).join('')||'<div class="empty">No sales yet.</div>'}
+
+function refresh(){
+  populateSelects();renderCart();renderPosKhata();renderRecentSales();renderDashboard();renderSales();renderParties();renderInventory();renderPurchases();renderExpenses();renderReports();loadSettings();document.getElementById('invoiceTag').textContent='INV-'+db.invoice;
+}
+refresh();
+updateAccessUI();
+setInterval(updateAccessUI,60000);
+</script>
+</body>
+</html>
