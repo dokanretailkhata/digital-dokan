@@ -7,7 +7,7 @@
         <meta name="mobile-web-app-capable" content="yes">
         <meta name="apple-mobile-web-app-capable" content="yes">
         <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
-        <title>Digital Dokan Pro &#x2014; POS, Khata & Inventory</title>
+        <title>Digital Dokan Pro — POS, Khata & Inventory</title>
         <style>
             :root {
                 --bg: #050805;
@@ -952,7 +952,7 @@
                 margin-top: 2px
             }
 
-            /* Responsive layout \2014  desktop, tablet and mobile */
+            /* Responsive layout — desktop, tablet and mobile */
             html {
                 min-width: 0;
                 overflow-x: hidden
@@ -1372,9 +1372,7 @@
             .print-area {
                 display: none
             }
-
-        /* Subscription / user-management layer */
-        .subscription-banner{display:flex;gap:12px;align-items:center;justify-content:space-between;padding:12px 14px;border:1px solid var(--line);border-radius:14px;background:var(--card);margin-bottom:16px;flex-wrap:wrap}
+            .subscription-banner{display:flex;gap:12px;align-items:center;justify-content:space-between;padding:12px 14px;border:1px solid var(--line);border-radius:14px;background:var(--card);margin-bottom:16px;flex-wrap:wrap}
         .subscription-banner .sub-meta{display:flex;gap:8px;align-items:center;flex-wrap:wrap}
         .plan-badge{padding:5px 9px;border-radius:999px;font-size:11px;font-weight:800;background:#0b2118;color:#34d399;border:1px solid #155e45}
         .subscription-lock{position:fixed;inset:0;background:rgba(3,8,5,.82);backdrop-filter:blur(8px);z-index:99999;display:none;align-items:center;justify-content:center;padding:18px}
@@ -1385,7 +1383,7 @@
         .session-warning{position:fixed;right:16px;bottom:16px;z-index:99998;max-width:390px;background:var(--card);border:1px solid #d97706;border-radius:16px;padding:14px;display:none;box-shadow:0 15px 50px rgba(0,0,0,.2)}
         .session-warning.show{display:block}
         .wm-trial{margin:18px auto 0;padding:8px 12px;border:1px dashed #888;text-align:center;font-weight:800;font-size:12px;letter-spacing:.5px}
-        </style>
+            .dd-login-overlay{position:fixed;inset:0;background:rgba(3,8,5,.86);backdrop-filter:blur(10px);z-index:100000;display:none;align-items:center;justify-content:center;padding:18px}.dd-login-overlay.show{display:flex}.dd-login-card{width:min(440px,100%);background:var(--card);border:1px solid var(--line);border-radius:22px;padding:24px;box-shadow:0 24px 80px rgba(0,0,0,.4)}.dd-login-card h2{margin:8px 0}.dd-login-card .hint{margin-bottom:14px}.dd-login-card .btn{min-height:44px}.dd-login-error{color:#ef4444;font-size:13px;margin-top:8px;min-height:18px}.dd-sync-dot{display:inline-block;width:8px;height:8px;border-radius:50%;background:#10b981;margin-right:6px}.dd-sync-dot.off{background:#f59e0b}    </style>
     </head>
     <body>
         <div class="app">
@@ -1396,58 +1394,62 @@
       </div>
                         <div>
                             <h1>Digital Dokan</h1>
-                            <p>Smart POS &#x2022; Khata &#x2022; Inventory</p>
+                            <p>Smart POS • Khata • Inventory</p>
                         </div>
                     </div>
                     <nav class="nav">
                         <button onclick="window.location.href='./index.html'">
-                            &#x2302; <span>Home</span>
+                            ⌂ <span>Home</span>
                         </button>
                         <button data-view="pos" class="active">
-                            &#x1F6D2; <span>Quick Billing / POS</span>
+                            🛒 <span>Quick Billing / POS</span>
                         </button>
                         <button data-view="dashboard">
-                            &#x1F4CA; <span>Dashboard</span>
+                            📊 <span>Dashboard</span>
                         </button>
                         <button data-view="sales">
-                            &#x1F4DC; <span>Sales & Invoices</span>
+                            📜 <span>Sales & Invoices</span>
                         </button>
                         <button data-view="parties">
-                            &#x1F465; <span>Customers & Khata</span>
+                            👥 <span>Customers & Khata</span>
                         </button>
                         <button data-view="inventory">
-                            &#x1F4E6; <span>Inventory & Stock</span>
+                            📦 <span>Inventory & Stock</span>
                         </button>
                         <button data-view="purchases">
-                            &#x1F69A; <span>Purchases & Suppliers</span>
+                            🚚 <span>Purchases & Suppliers</span>
                         </button>
                         <button data-view="expenses">
-                            &#x1F4B0; <span>Cash & Expenses</span>
+                            💰 <span>Cash & Expenses</span>
                         </button>
                         <button data-view="reports">
-                            &#x1F4C8; <span>Reports</span>
+                            📈 <span>Reports</span>
+                        </button>
+                        <button data-view="hr">
+                            👔 <span>HR & Payroll</span>
                         </button>
                         <button data-view="settings">
-                            &#x2699;&#xFE0F; <span>Settings & Backup</span>
+                            ⚙️ <span>Settings & Backup</span>
                         </button>
                     </nav>
                 </div>
                 <div class="sidebar-footer">
                     <span>
-                        Status: <b class="online">&#x25CF; Secure Local</b>
+                        Status: <b class="online">● Secure Local</b>
                     </span>
-                    <span>PRO v4.0</span>
+                    <span>PRO v5.0 • Cloud + HR</span>
                 </div>
             </aside>
             <div class="sidebar-backdrop" id="sidebarBackdrop"></div>
             <main class="main">
                 <header class="topbar">
                     <div class="flex center gap8">
-                        <button class="btn mobile-menu" id="menuBtn">&#x2630;</button>
-                        <span class="brand-dot">&#x25CF;</span>
+                        <button class="btn mobile-menu" id="menuBtn">☰</button>
+                        <span class="brand-dot">●</span>
                         <span class="page-title" id="pageTitle">Quick Billing / POS</span>
                     </div>
                     <div class="top-actions">
+                        <button class="btn" id="langToggle" onclick="toggleLanguage()">اردو</button>
                         <a class="btn" href="./index.html">Back to website</a>
                         <span class="trial-pill" id="trialPill">7-Day Free Trial</span>
                         <button class="btn green" onclick="openModal('invoiceModal')">+ Quick Invoice</button>
@@ -1459,7 +1461,7 @@
                     <div class="pro-banner">
                         <div>
                             <strong>Digital Dokan Pro</strong>
-                            <span>Simple English &#x2022; Fast billing &#x2022; Khata &#x2022; Stock &#x2022; WhatsApp</span>
+                            <span>Simple English • Fast billing • Khata • Stock • WhatsApp</span>
                         </div>
                         <div class="pro-badge">PRO</div>
                     </div>
@@ -1468,7 +1470,7 @@
                         <div class="grid posgrid">
                             <div class="card pad">
                                 <div class="card-head">
-                                    <div class="card-title">&#x1F9FE; Quick Billing / Checkout</div>
+                                    <div class="card-title">🧾 Quick Billing / Checkout</div>
                                     <span class="badge green" id="invoiceTag">INV-1001</span>
                                 </div>
                                 <div class="grid g2">
@@ -1553,17 +1555,17 @@
                                         </div>
                                     </div>
                                     <div class="actions" style="margin-top:12px">
-                                        <button class="btn green" onclick="checkout('save')">&#x1F4BE; Save Sale</button>
-                                        <button class="btn" onclick="checkout('whatsapp')">&#x1F4AC; Save + WhatsApp</button>
-                                        <button class="btn amber" onclick="setUdhaar()">&#x1F4D5; Udhaar</button>
-                                        <button class="btn blue" onclick="printCurrentInvoice()">&#x1F5A8;&#xFE0F; Print</button>
+                                        <button class="btn green" onclick="checkout('save')">💾 Save Sale</button>
+                                        <button class="btn" onclick="checkout('whatsapp')">💬 Save + WhatsApp</button>
+                                        <button class="btn amber" onclick="setUdhaar()">📕 Udhaar</button>
+                                        <button class="btn blue" onclick="printCurrentInvoice()">🖨️ Print</button>
                                         <button class="btn red" onclick="clearCart()">Clear</button>
                                     </div>
                                 </div>
                             </div>
                             <div class="card pad">
                                 <div class="card-head">
-                                    <div class="card-title">&#x1F4D5; Customer Khata Snapshot</div>
+                                    <div class="card-title">📕 Customer Khata Snapshot</div>
                                     <span class="badge gray">Live</span>
                                 </div>
                                 <div id="posKhataSnapshot" class="empty">Select a customer to view balance.</div>
@@ -1578,7 +1580,7 @@
                                         <div class="small" style="font-weight:900;margin-bottom:10px">Quick Customer Actions</div>
                                         <div class="actions">
                                             <button class="btn sm" onclick="openModal('paymentModal')">+ Receive Payment</button>
-                                            <button class="btn sm" onclick="openModal('statementModal')">&#x1F4C4; Statement</button>
+                                            <button class="btn sm" onclick="openModal('statementModal')">📄 Statement</button>
                                         </div>
                                     </div>
                                 </div>
@@ -1586,7 +1588,7 @@
                         </div>
                         <div class="card pad" style="margin-top:16px">
                             <div class="card-head">
-                                <div class="card-title">&#x1F4DC; Recent Sales</div>
+                                <div class="card-title">📜 Recent Sales</div>
                                 <button class="btn sm" onclick="switchView('sales')">View All</button>
                             </div>
                             <div id="recentSales"></div>
@@ -1598,14 +1600,14 @@
                         <div class="grid g2" style="margin-top:16px">
                             <div class="card pad">
                                 <div class="card-head">
-                                    <div class="card-title">&#x1F4C8; Last 7 Days Sales</div>
+                                    <div class="card-title">📈 Last 7 Days Sales</div>
                                     <span class="badge green">Real Data</span>
                                 </div>
                                 <div class="chart" id="salesChart"></div>
                             </div>
                             <div class="card pad">
                                 <div class="card-head">
-                                    <div class="card-title">&#x26A1; Business Snapshot</div>
+                                    <div class="card-title">⚡ Business Snapshot</div>
                                 </div>
                                 <div id="dashboardSnapshot"></div>
                             </div>
@@ -1630,7 +1632,7 @@
                         <div class="card pad">
                             <div class="card-head">
                                 <div>
-                                    <div class="card-title">&#x1F4DC; Sales & Invoice History</div>
+                                    <div class="card-title">📜 Sales & Invoice History</div>
                                     <div class="hint">Search invoices, customers and payment status.</div>
                                 </div>
                                 <div class="actions">
@@ -1642,7 +1644,7 @@
                                 <input class="input" id="salesSearch" placeholder="Search invoice, customer, phone..." oninput="renderSales()">
                                 <div class="date-field" style="max-width:180px;flex:1">
                                     <input class="input" id="salesDate" type="date" onchange="renderSales()" aria-label="Filter sales by date">
-                                    <span class="date-open">&#x25A3;</span>
+                                    <span class="date-open">▣</span>
                                 </div>
                             </div>
                             <div style="overflow:auto">
@@ -1670,7 +1672,7 @@
                         <div class="card pad">
                             <div class="card-head">
                                 <div>
-                                    <div class="card-title">&#x1F465; Customers & Khata</div>
+                                    <div class="card-title">👥 Customers & Khata</div>
                                     <div class="hint">Every customer has a complete ledger, sales and payment history.</div>
                                 </div>
                                 <button class="btn green" onclick="openModal('partyModal')">+ Add Customer</button>
@@ -1686,7 +1688,7 @@
                         <div class="card pad">
                             <div class="card-head">
                                 <div>
-                                    <div class="card-title">&#x1F4E6; Inventory & Stock</div>
+                                    <div class="card-title">📦 Inventory & Stock</div>
                                     <div class="hint">Stock decreases automatically after a POS sale.</div>
                                 </div>
                                 <button class="btn green" onclick="openModal('itemModal')">+ Add Product</button>
@@ -1718,7 +1720,7 @@
                         <div class="grid g2">
                             <div class="card pad">
                                 <div class="card-head">
-                                    <div class="card-title">&#x1F69A; Record Purchase</div>
+                                    <div class="card-title">🚚 Record Purchase</div>
                                 </div>
                                 <form id="purchaseForm">
                                     <div class="grid g2">
@@ -1791,7 +1793,7 @@
                         <div class="grid g2">
                             <div class="card pad">
                                 <div class="card-head">
-                                    <div class="card-title">&#x1F4B0; Add Expense</div>
+                                    <div class="card-title">💰 Add Expense</div>
                                 </div>
                                 <form id="expenseForm">
                                     <div class="grid g2">
@@ -1852,7 +1854,7 @@
                         <div class="card pad">
                             <div class="card-head">
                                 <div>
-                                    <div class="card-title">&#x1F4C8; Business Reports</div>
+                                    <div class="card-title">📈 Business Reports</div>
                                     <div class="hint">Use date filters for daily/monthly analysis.</div>
                                 </div>
                                 <div class="actions">
@@ -1864,12 +1866,12 @@
                                 <div class="field date-field">
                                     <label>From</label>
                                     <input class="input" type="date" id="reportFrom" onchange="renderReports()" aria-label="Report start date">
-                                    <span class="date-open">&#x25A3;</span>
+                                    <span class="date-open">▣</span>
                                 </div>
                                 <div class="field date-field">
                                     <label>To</label>
                                     <input class="input" type="date" id="reportTo" onchange="renderReports()" aria-label="Report end date">
-                                    <span class="date-open">&#x25A3;</span>
+                                    <span class="date-open">▣</span>
                                 </div>
                             </div>
                             <div id="reportCards" class="grid g4" style="margin-top:10px"></div>
@@ -1889,12 +1891,66 @@
                             </div>
                         </div>
                     </section>
+                    <!-- HR & PAYROLL -->
+                    <section id="view-hr" class="view">
+                        <div class="grid g4">
+                            <div class="stat"><div class="stat-label">Employees</div><div class="stat-value green-text" id="hrEmployees">0</div></div>
+                            <div class="stat"><div class="stat-label">Present Today</div><div class="stat-value" id="hrPresent">0</div></div>
+                            <div class="stat"><div class="stat-label">Late Today</div><div class="stat-value amber-text" id="hrLate">0</div></div>
+                            <div class="stat"><div class="stat-label">This Month Payroll</div><div class="stat-value purple-text" id="hrPayroll">Rs. 0</div></div>
+                        </div>
+                        <div class="tabs" style="margin-top:16px">
+                            <button class="btn active" onclick="hrTab('attendance',this)">🕘 Attendance</button>
+                            <button class="btn" onclick="hrTab('employees',this)">👥 Employees</button>
+                            <button class="btn" onclick="hrTab('payroll',this)">💰 Monthly Payroll</button>
+                            <button class="btn" onclick="hrTab('year',this)">📅 Year History</button>
+                        </div>
+                        <div id="hrAttendanceTab">
+                            <div class="grid g2">
+                                <div class="card pad">
+                                    <div class="card-head"><div><div class="card-title">Daily Attendance</div><div class="hint">Record exact arrival and leaving time.</div></div><button class="btn green" onclick="openHRModal('attendance')">+ Attendance</button></div>
+                                    <div class="searchbar"><input class="input" id="hrAttendanceDate" type="date" onchange="renderHR()"><input class="input" id="hrAttendanceSearch" placeholder="Search employee..." oninput="renderHR()"></div>
+                                    <div class="table-wrap"><table class="table"><thead><tr><th>Employee</th><th>Date</th><th>In</th><th>Out</th><th>Status</th><th>Late</th><th>Deduction</th><th>Action</th></tr></thead><tbody id="hrAttendanceBody"></tbody></table></div>
+                                </div>
+                                <div class="card pad">
+                                    <div class="card-head"><div class="card-title">Today's Team</div></div>
+                                    <div id="hrTodayList"></div>
+                                </div>
+                            </div>
+                        </div>
+                        <div id="hrEmployeesTab" style="display:none">
+                            <div class="card pad">
+                                <div class="card-head"><div><div class="card-title">Employees & Salary Rules</div><div class="hint">Keep salary, timing, weekly off and deduction rules for the full year.</div></div><button class="btn green" onclick="openHRModal('employee')">+ Add Employee</button></div>
+                                <div class="table-wrap"><table class="table"><thead><tr><th>Name</th><th>Role</th><th>Monthly Salary</th><th>Daily Rate / 30</th><th>Timing</th><th>Grace</th><th>Joined</th><th>Action</th></tr></thead><tbody id="hrEmployeeBody"></tbody></table></div>
+                            </div>
+                        </div>
+                        <div id="hrPayrollTab" style="display:none">
+                            <div class="card pad">
+                                <div class="card-head"><div><div class="card-title">Monthly Payroll Calculator</div><div class="hint">30-day salary basis: salary ÷ 30. Absent = full daily deduction. Late deduction follows each employee's rule.</div></div><button class="btn blue" onclick="printPayroll()">🖨️ Print Payroll</button></div>
+                                <div class="grid g2">
+                                    <div class="field"><label>Month</label><input class="input" id="hrPayrollMonth" type="month" onchange="renderHR()"></div>
+                                    <div class="field"><label>Default Pay Basis</label><div class="input">30 days per month</div></div>
+                                </div>
+                                <div class="table-wrap"><table class="table"><thead><tr><th>Employee</th><th>Salary</th><th>Days Present</th><th>Absent</th><th>Late Min</th><th>Late Deduction</th><th>Absent Deduction</th><th>Other</th><th>Net Pay</th><th>Status</th></tr></thead><tbody id="hrPayrollBody"></tbody></table></div>
+                            </div>
+                        </div>
+                        <div id="hrYearTab" style="display:none">
+                            <div class="card pad">
+                                <div class="card-head"><div><div class="card-title">1-Year Attendance & Payment History</div><div class="hint">Search any month and keep the attendance/payroll trail for up to one year and beyond.</div></div><button class="btn" onclick="exportHRYear()">Export HR CSV</button></div>
+                                <div class="grid g2">
+                                    <div class="field"><label>Year</label><select class="select" id="hrYear" onchange="renderHRYear()"></select></div>
+                                    <div class="field"><label>Employee</label><select class="select" id="hrYearEmployee" onchange="renderHRYear()"><option value="">All Employees</option></select></div>
+                                </div>
+                                <div class="table-wrap"><table class="table"><thead><tr><th>Month</th><th>Employee</th><th>Present</th><th>Absent</th><th>Late Min</th><th>Deduction</th><th>Net Pay</th></tr></thead><tbody id="hrYearBody"></tbody></table></div>
+                            </div>
+                        </div>
+                    </section>
                     <!-- SETTINGS -->
                     <section id="view-settings" class="view">
                         <div class="grid g2">
                             <div class="card pad">
                                 <div class="card-head">
-                                    <div class="card-title">&#x1F3EA; Business Profile</div>
+                                    <div class="card-title">🏪 Business Profile</div>
                                 </div>
                                 <div class="field">
                                     <label>Business Name</label>
@@ -1922,12 +1978,12 @@
                             </div>
                             <div class="card pad">
                                 <div class="card-head">
-                                    <div class="card-title">&#x1F4BE; Backup & Restore</div>
+                                    <div class="card-title">💾 Backup & Restore</div>
                                 </div>
                                 <p class="hint">Responsive on mobile, tablet and laptop. This version stores data in this browser. Export a backup regularly before changing devices.</p>
                                 <div class="actions">
-                                    <button class="btn green" onclick="backupData()">&#x2B07; Download Backup</button>
-                                    <button class="btn" onclick="document.getElementById('restoreFile').click()">&#x2B06; Restore Backup</button>
+                                    <button class="btn green" onclick="backupData()">⬇ Download Backup</button>
+                                    <button class="btn" onclick="document.getElementById('restoreFile').click()">⬆ Restore Backup</button>
                                     <input id="restoreFile" type="file" accept=".json" hidden onchange="restoreData(event)">
                                 </div>
                                 <div class="actions" style="margin-top:9px">
@@ -1938,14 +1994,32 @@
                             </div>
                         </div>
                         <div class="card pad" style="margin-top:16px">
-                            <div class="card-head">
-                                <div class="card-title">&#x1F510; Subscription & User Management</div>
+                            <div class="card-head"><div><div class="card-title">☁️ Cloud Database & Multi-Branch</div><div class="hint">Google sign-in identifies your business account. Firestore keeps the same business data available across signed-in phones and laptops when configured.</div></div><span class="badge blue" id="cloudStatus">Local mode</span></div>
+                            <div class="field"><label>Firebase Web Config (JSON)</label><textarea class="textarea" id="cloudConfig" placeholder='{"apiKey":"...","authDomain":"...","projectId":"...","storageBucket":"...","messagingSenderId":"...","appId":"..."}'></textarea></div>
+                            <div class="grid g2">
+                                <div class="field"><label>Business / Tenant ID</label><input class="input" id="cloudTenantId" placeholder="Leave empty to use your Google account ID"></div>
+                                <div class="field"><label>Cloud Account</label><div class="input" id="cloudAccount">Not connected</div></div>
                             </div>
+                            <div class="actions">
+                                <button class="btn green" onclick="saveCloudConfig()">Save Cloud Config</button>
+                                <button class="btn green" onclick="startGoogleCloud()">☁️ Sign in & Sync</button>
+                                <button class="btn" onclick="cloudPull()">↓ Pull Cloud Data</button>
+                                <button class="btn" onclick="cloudPush()">↑ Push Local Data</button>
+                                <button class="btn" onclick="syncNow()">↻ Sync Now</button>
+                            </div>
+                            <div class="hint" style="margin-top:10px">Production note: Firebase config and Firestore Security Rules must be configured for your own project. This UI never stores a Gmail password.</div>
+                        </div>
+                        <div class="card pad" style="margin-top:16px">
+                            <div class="card-head"><div><div class="card-title">🏢 Branches</div><div class="hint">Prepare separate branches while keeping one business account and shared master data.</div></div><button class="btn green" onclick="addBranch()">+ Add Branch</button></div>
+                            <div id="branchList"></div>
+                        </div>
+                        <div class="card pad" style="margin-top:16px">
+                            <div class="card-head"><div class="card-title">🔐 Subscription & User Management</div></div>
                             <div id="subscriptionSettingsPanel"></div>
                         </div>
                         <div class="card pad" style="margin-top:16px">
                             <div class="card-head">
-                                <div class="card-title">&#x1F9F9; Data Management</div>
+                                <div class="card-title">🧹 Data Management</div>
                             </div>
                             <div class="danger-zone">
                                 <b>Danger Zone</b>
@@ -1961,8 +2035,8 @@
         <div class="modal" id="partyModal">
             <div class="modal-box">
                 <div class="modal-head">
-                    <h3>&#x1F465; Add Customer / Party</h3>
-                    <button class="close" onclick="closeModal('partyModal')">&#xD7;</button>
+                    <h3>👥 Add Customer / Party</h3>
+                    <button class="close" onclick="closeModal('partyModal')">×</button>
                 </div>
                 <form id="partyForm">
                     <div class="grid g2">
@@ -1993,8 +2067,8 @@
         <div class="modal" id="itemModal">
             <div class="modal-box">
                 <div class="modal-head">
-                    <h3>&#x1F4E6; Add Product</h3>
-                    <button class="close" onclick="closeModal('itemModal')">&#xD7;</button>
+                    <h3>📦 Add Product</h3>
+                    <button class="close" onclick="closeModal('itemModal')">×</button>
                 </div>
                 <form id="itemForm">
                     <div class="grid g2">
@@ -2050,8 +2124,8 @@
         <div class="modal" id="invoiceModal">
             <div class="modal-box">
                 <div class="modal-head">
-                    <h3>&#x1F9FE; Quick Invoice</h3>
-                    <button class="close" onclick="closeModal('invoiceModal')">&#xD7;</button>
+                    <h3>🧾 Quick Invoice</h3>
+                    <button class="close" onclick="closeModal('invoiceModal')">×</button>
                 </div>
                 <form id="quickInvoiceForm">
                     <div class="grid g2">
@@ -2089,8 +2163,8 @@
         <div class="modal" id="paymentModal">
             <div class="modal-box">
                 <div class="modal-head">
-                    <h3>&#x1F4B5; Receive Khata Payment</h3>
-                    <button class="close" onclick="closeModal('paymentModal')">&#xD7;</button>
+                    <h3>💵 Receive Khata Payment</h3>
+                    <button class="close" onclick="closeModal('paymentModal')">×</button>
                 </div>
                 <form id="paymentForm">
                     <div class="field">
@@ -2125,8 +2199,8 @@
         <div class="modal" id="statementModal">
             <div class="modal-box">
                 <div class="modal-head">
-                    <h3>&#x1F4C4; Customer Statement</h3>
-                    <button class="close" onclick="closeModal('statementModal')">&#xD7;</button>
+                    <h3>📄 Customer Statement</h3>
+                    <button class="close" onclick="closeModal('statementModal')">×</button>
                 </div>
                 <div class="field">
                     <label>Customer</label>
@@ -2134,8 +2208,8 @@
                 </div>
                 <div id="statementBody"></div>
                 <div class="actions" style="margin-top:12px">
-                    <button class="btn blue" onclick="printStatement()">&#x1F5A8;&#xFE0F; Print Statement</button>
-                    <button class="btn" onclick="whatsappStatement()">&#x1F4AC; WhatsApp</button>
+                    <button class="btn blue" onclick="printStatement()">🖨️ Print Statement</button>
+                    <button class="btn" onclick="whatsappStatement()">💬 WhatsApp</button>
                 </div>
             </div>
         </div>
@@ -2144,9 +2218,15 @@
             <div class="modal-box">
                 <div class="modal-head">
                     <h3 id="customerModalTitle">Customer</h3>
-                    <button class="close" onclick="closeModal('customerModal')">&#xD7;</button>
+                    <button class="close" onclick="closeModal('customerModal')">×</button>
                 </div>
                 <div id="customerDetail"></div>
+            </div>
+        </div>
+        <div class="modal" id="hrModal">
+            <div class="modal-box">
+                <div class="modal-head"><h3 id="hrModalTitle">HR</h3><button class="close" onclick="closeModal('hrModal')">×</button></div>
+                <form id="hrForm"></form>
             </div>
         </div>
         <div class="license-gate" id="licenseGate">
@@ -2172,7 +2252,7 @@
                 <span class="badge green">DIGITAL DOKAN PRO</span>
                 <h2 id="gateTitle">Welcome to Digital Dokan</h2>
                 <p id="gateText">Your first 7 days are free. After the trial, a Pro license is required to continue.</p>
-                <div class="trial-clock" id="trialClock">Starting your free trial&#x2026;</div>
+                <div class="trial-clock" id="trialClock">Starting your free trial…</div>
                 <div class="field">
                     <label>Pro License Key</label>
                     <input class="input" id="licenseKey" placeholder="Enter your Pro key">
@@ -2186,15 +2266,21 @@
                 <div class="badge red">SUBSCRIPTION LOCKED</div>
                 <h2 id="subscriptionLockTitle">Your Subscription/Trial has expired</h2>
                 <p id="subscriptionLockText">Your Subscription/Trial has expired. Please contact support at +923257633875 to upgrade.</p>
-                <div class="actions" style="justify-content:center;margin-top:18px">
-                    <button class="btn green" onclick="goToPricing()">View Pricing</button>
-                    <button class="btn" onclick="signOutLocalSession()">Sign Out</button>
-                </div>
+                <div class="actions" style="justify-content:center;margin-top:18px"><button class="btn green" onclick="goToPricing()">View Pricing</button><button class="btn" onclick="signOutLocalSession()">Sign Out</button></div>
             </div>
         </div>
-        <div class="session-warning" id="sessionWarning">
-            <b>Another session is active</b>
-            <div class="tiny muted" style="margin-top:4px">This account was opened on another browser/device. You will be signed out here if the active session changes.</div>
+        <div class="session-warning" id="sessionWarning"><b>Another session is active</b><div class="tiny muted" style="margin-top:4px">This account was opened on another browser/device. This session will be signed out.</div></div>
+        <div class="dd-login-overlay" id="ddLoginOverlay">
+            <div class="dd-login-card">
+                <div class="badge green">DIGITAL DOKAN</div>
+                <h2>Sign in to Digital Dokan</h2>
+                <div class="hint">Use your Digital Dokan account. The same account can sync business data across devices when cloud sync is configured.</div>
+                <div class="field"><label>Email</label><input class="input" id="ddLoginEmail" type="email" autocomplete="username" placeholder="Email address"></div>
+                <div class="field"><label>Password</label><input class="input" id="ddLoginPassword" type="password" autocomplete="current-password" placeholder="Password" onkeydown="if(event.key==='Enter')ddLogin()"></div>
+                <div class="dd-login-error" id="ddLoginError"></div>
+                <button class="btn green wide" onclick="ddLogin()">Sign In</button>
+                <div class="tiny muted" style="margin-top:12px">Cloud sync uses Firebase Authentication + Firestore. Do not share your password.</div>
+            </div>
         </div>
         <div class="toast" id="toast"></div>
         <!-- PRINT AREA -->
@@ -2206,7 +2292,7 @@
                         <span class="logo">DD</span>
                         <span>
                             <b style="color:#fff;font-size:18px">Digital Dokan</b>
-                            <small style="display:block;color:#34d399">Smart POS &#x2022; Khata &#x2022; Inventory</small>
+                            <small style="display:block;color:#34d399">Smart POS • Khata • Inventory</small>
                         </span>
                     </a>
                     <p>Simple retail software for Pakistani businesses.</p>
@@ -2227,12 +2313,10 @@
                     <a href="mailto:dokanretailkhata@gmail.com" style="color:#34d399">dokanretailkhata@gmail.com</a>
                 </div>
             </div>
-            <div class="copyright">&#xA9; 2026 Digital Dokan. All rights reserved.</div>
+            <div class="copyright">© 2026 Digital Dokan. All rights reserved.</div>
         </footer>
         <script>
-            // Legacy local auth is no longer a hard redirect. The dashboard can bootstrap
-            // from the secure Firebase session when configured, while keeping the old local flag
-            // for existing installations. Never store account passwords in this HTML file.
+            // Authentication is handled by the Digital Dokan account gate below.
             const KEY = 'digital_dokan_v4';
             const LICENSE_KEY = 'digital_dokan_license_v1';
             const TRIAL_DAYS = 7;
@@ -2390,16 +2474,13 @@
                 }],
                 purchases: [],
                 expenses: [],
-                subUsers: [],
-                subscription: {
-                    plan_type: '7_days_trial',
-                    expiry_date: null,
-                    invoice_count: 0,
-                    master_email: '',
-                    master_uid: '',
-                    max_sub_users: 0
-                },
-                session: { token: '', issuedAt: 0, deviceId: '' }
+                employees: [],
+                attendance: [],
+                payrollAdjustments: [],
+                branches: [{id:'main',name:'Main Branch',active:true}],
+                cloud: {projectId:'', tenantId:'', uid:'', email:'', enabled:false},
+                subscription: {plan_type:'7_days_trial', master_email:'', master_uid:'', trial_start:0, expiry_date:'', invoice_count:0, max_sub_users:0},
+                subUsers: []
             };
             let db = loadDB()
               , cart = []
@@ -2444,7 +2525,7 @@
                     access = {
                         licensed: true,
                         activatedAt: Date.now(),
-                        keyHint: key.slice(0, 8) + '\u{2026}'
+                        keyHint: key.slice(0, 8) + '…'
                     };
                     localStorage.setItem(LICENSE_KEY, JSON.stringify(access));
                     document.getElementById('licenseGate').classList.remove('show');
@@ -2460,7 +2541,7 @@
                 if (!pill)
                     return;
                 if (access.licensed) {
-                    pill.textContent = '\u{2713} Pro Active';
+                    pill.textContent = '✓ Pro Active';
                     pill.style.background = '#0b2118';
                     if (gate)
                         gate.classList.remove('show');
@@ -2469,7 +2550,7 @@
                 const ms = trialRemaining()
                   , days = Math.ceil(ms / 86400000);
                 if (ms > 0) {
-                    pill.textContent = `Free Trial \u{2022} ${days} day${days === 1 ? '' : 's'} left`;
+                    pill.textContent = `Free Trial • ${days} day${days === 1 ? '' : 's'} left`;
                     clock.textContent = `Your free trial ends in ${days} day${days === 1 ? '' : 's'}.`;
                     gate.classList.remove('show')
                 } else {
@@ -2506,9 +2587,13 @@
                     khata: Array.isArray(s.khata) ? s.khata : [],
                     purchases: Array.isArray(s.purchases) ? s.purchases : [],
                     expenses: Array.isArray(s.expenses) ? s.expenses : [],
-                    subUsers: Array.isArray(s.subUsers) ? s.subUsers : [],
-                    subscription: { ...d.subscription, ...(s.subscription || {}) },
-                    session: { ...d.session, ...(s.session || {}) }
+                    employees: Array.isArray(s.employees) ? s.employees : [],
+                    attendance: Array.isArray(s.attendance) ? s.attendance : [],
+                    payrollAdjustments: Array.isArray(s.payrollAdjustments) ? s.payrollAdjustments : [],
+                    branches: Array.isArray(s.branches) ? s.branches : [{id:'main',name:'Main Branch',active:true}],
+                    cloud: { ...(d.cloud || {}), ...(s.cloud || {}) },
+                    subscription: { ...(d.subscription || {}), ...(s.subscription || {}) },
+                    subUsers: Array.isArray(s.subUsers) ? s.subUsers : []
                 };
             }
             function saveDB() {
@@ -2577,6 +2662,7 @@
                     purchases: 'Purchases & Suppliers',
                     expenses: 'Cash & Expenses',
                     reports: 'Reports',
+                    hr: 'HR & Payroll',
                     settings: 'Settings & Backup'
                 };
                 document.getElementById('pageTitle').textContent = titles[v];
@@ -2611,14 +2697,14 @@
             );
 
             function populateSelects() {
-                const opts = db.customers.map(c => `<option value="${esc(c.id)}">${esc(c.name)} \u{2014} ${money(customerBalance(c.id))}</option>`).join('');
+                const opts = db.customers.map(c => `<option value="${esc(c.id)}">${esc(c.name)} — ${money(customerBalance(c.id))}</option>`).join('');
                 ['paymentCustomer', 'statementCustomer'].forEach(id => {
                     const s = document.getElementById(id);
                     if (s)
                         s.innerHTML = '<option value="">Select customer</option>' + opts
                 }
                 );
-                document.getElementById('purchaseProduct').innerHTML = '<option value="">Select product</option>' + db.products.map(p => `<option value="${p.id}">${esc(p.name)} \u{2014} ${money(p.sale)}</option>`).join('');
+                document.getElementById('purchaseProduct').innerHTML = '<option value="">Select product</option>' + db.products.map(p => `<option value="${p.id}">${esc(p.name)} — ${money(p.sale)}</option>`).join('');
                 document.getElementById('customerList').innerHTML = db.customers.map(c => `<option value="${esc(c.name)}"></option>`).join('');
                 document.getElementById('productList').innerHTML = db.products.map(p => `<option value="${esc(p.name)}"></option>`).join('');
             }
@@ -2733,7 +2819,7 @@
                     updateTotals();
                     return
                 }
-                body.innerHTML = cart.map(x => `<tr><td><b>${esc(x.name)}</b></td><td>${money(x.price)}</td><td>${x.qty}</td><td class="green-text"><b>${money(x.price * x.qty)}</b></td><td class="right"><button class="btn sm red" onclick="removeCart('${x.id}')">\u{D7}</button></td></tr>`).join('');
+                body.innerHTML = cart.map(x => `<tr><td><b>${esc(x.name)}</b></td><td>${money(x.price)}</td><td>${x.qty}</td><td class="green-text"><b>${money(x.price * x.qty)}</b></td><td class="right"><button class="btn sm red" onclick="removeCart('${x.id}')">×</button></td></tr>`).join('');
                 updateTotals();
             }
             function removeCart(x) {
@@ -2758,7 +2844,11 @@
             }
 
             function checkout(mode='save') {
-                if (!verifySubscriptionAccess(true)) return;
+                if (typeof verifySubscriptionAccess==='function' && !verifySubscriptionAccess(true)) return;
+                if (!hasAccess()) {
+                    updateAccessUI();
+                    return;
+                }
                 if (!cart.length)
                     return alert('Add at least one item.');
                 const name = document.getElementById('posCustomer').value.trim() || 'Walk-in Customer';
@@ -2800,8 +2890,6 @@
                     payment
                 };
                 db.sales.unshift(sale);
-                if (!db.subscription) db.subscription = structuredClone(defaults.subscription);
-                db.subscription.invoice_count = Math.max(Number(db.subscription.invoice_count || 0), db.sales.length);
                 sale.items.forEach(line => {
                     if (line.productId) {
                         const p = db.products.find(x => x.id === line.productId);
@@ -2849,7 +2937,7 @@
   <div style="display:flex;justify-content:space-between;border-bottom:2px solid #111;padding-bottom:14px">
   <div><h1 style="margin:0">${esc(b.name)}</h1><div>${esc(b.address)}</div><div>${esc(b.phone)}</div></div>
   <div style="text-align:right"><b>INVOICE</b><div>${esc(s.invoice)}</div><div>${dateTime(s.date)}</div></div></div>
-  <div style="margin:18px 0"><b>Customer:</b> ${esc(s.customer)} ${s.phone ? `\u{2022} ${esc(s.phone)}` : ''}</div>
+  <div style="margin:18px 0"><b>Customer:</b> ${esc(s.customer)} ${s.phone ? `• ${esc(s.phone)}` : ''}</div>
   <table style="width:100%;border-collapse:collapse"><thead><tr><th style="text-align:left;border-bottom:1px solid #aaa;padding:8px">Item</th><th style="padding:8px">Qty</th><th style="padding:8px">Price</th><th style="text-align:right;padding:8px">Total</th></tr></thead><tbody>
   ${s.items.map(i => `<tr><td style="padding:8px;border-bottom:1px solid #ddd">${esc(i.name)}</td><td style="padding:8px;text-align:center;border-bottom:1px solid #ddd">${i.qty}</td><td style="padding:8px;text-align:center;border-bottom:1px solid #ddd">${money(i.price)}</td><td style="padding:8px;text-align:right;border-bottom:1px solid #ddd">${money(i.total)}</td></tr>`).join('')}
   </tbody></table><div style="margin-left:auto;max-width:300px;margin-top:15px">
@@ -2858,7 +2946,6 @@
   <div style="display:flex;justify-content:space-between;font-size:20px;margin-top:8px;border-top:2px solid #111;padding-top:8px"><span>Total</span><b>${money(s.total)}</b></div>
   <div style="display:flex;justify-content:space-between"><span>Paid</span><b>${money(s.paid)}</b></div>
   <div style="display:flex;justify-content:space-between"><span>Udhaar</span><b>${money(s.due)}</b></div></div>
-  ${isTrialPlan() ? '<div class="wm-trial">Digital Dokan - Free Trial</div>' : ''}
   <p style="margin-top:30px;text-align:center">${esc(b.footer)}</p></div>`;
             }
             function printInvoice(s) {
@@ -2871,7 +2958,7 @@
                     return alert('Customer phone/WhatsApp number is missing.');
                 const n = s.phone.replace(/\D/g, '').replace(/^0/, '92');
                 const items = s.items.map(i => `${i.name} x${i.qty} = Rs. ${Number(i.total).toLocaleString()}`).join('\n');
-                const text = `Assalam-o-Alaikum ${s.customer} \u{1F44B}\n\n*${db.business.name}*\nInvoice: *${s.invoice}*\n\n${items}\n\n*Total: Rs. ${s.total.toLocaleString()}*\nPaid: Rs. ${s.paid.toLocaleString()}\nUdhaar: Rs. ${s.due.toLocaleString()}\n\n${db.business.footer}`;
+                const text = `Assalam-o-Alaikum ${s.customer} 👋\n\n*${db.business.name}*\nInvoice: *${s.invoice}*\n\n${items}\n\n*Total: Rs. ${s.total.toLocaleString()}*\nPaid: Rs. ${s.paid.toLocaleString()}\nUdhaar: Rs. ${s.due.toLocaleString()}\n\n${db.business.footer}`;
                 window.open(`https://wa.me/${n}?text=${encodeURIComponent(text)}`, '_blank');
             }
 
@@ -2983,9 +3070,9 @@
                   , b = customerBalance(cid)
                   , logs = db.khata.filter(k => k.customerId === cid)
                   , sales = db.sales.filter(s => s.customerId === cid);
-                document.getElementById('customerModalTitle').textContent = c.name + ' \u{2014} Khata';
-                document.getElementById('customerDetail').innerHTML = `<div class="kpi-row"><div class="mini-kpi">Balance<b class="${b > 0 ? 'red-text' : 'green-text'}">${money(b)}</b></div><div class="mini-kpi">Total Sales<b>${money(sales.reduce( (a, s) => a + s.total, 0))}</b></div><div class="mini-kpi">Phone<b>${esc(c.phone || '\u{2014}')}</b></div></div>
-  <div class="actions" style="margin:12px 0"><button class="btn sm" onclick="prefillPayment('${c.id}')">+ Receive Payment</button><button class="btn sm" onclick="whatsappCustomer('${c.id}')">\u{1F4AC} Send Khata</button><button class="btn sm blue" onclick="printCustomerStatement('${c.id}')">\u{1F5A8}\u{FE0F} Print</button></div>
+                document.getElementById('customerModalTitle').textContent = c.name + ' — Khata';
+                document.getElementById('customerDetail').innerHTML = `<div class="kpi-row"><div class="mini-kpi">Balance<b class="${b > 0 ? 'red-text' : 'green-text'}">${money(b)}</b></div><div class="mini-kpi">Total Sales<b>${money(sales.reduce( (a, s) => a + s.total, 0))}</b></div><div class="mini-kpi">Phone<b>${esc(c.phone || '—')}</b></div></div>
+  <div class="actions" style="margin:12px 0"><button class="btn sm" onclick="prefillPayment('${c.id}')">+ Receive Payment</button><button class="btn sm" onclick="whatsappCustomer('${c.id}')">💬 Send Khata</button><button class="btn sm blue" onclick="printCustomerStatement('${c.id}')">🖨️ Print</button></div>
   <div style="overflow:auto"><table class="table"><thead><tr><th>Date</th><th>Reference</th><th>Type</th><th>Note</th><th>Amount</th><th>Balance</th></tr></thead><tbody>${renderLedgerRows(c, logs)}</tbody></table></div>`;
                 openModal('customerModal');
             }
@@ -3006,7 +3093,7 @@
                     })
                 }
                 );
-                return rows.reverse().map(k => `<tr><td>${k.date ? dateTime(k.date) : '\u{2014}'}</td><td>${esc(k.ref || '\u{2014}')}</td><td><span class="badge ${k.type === 'credit' ? 'red' : 'green'}">${k.type === 'credit' ? 'Udhaar' : 'Payment'}</span></td><td>${esc(k.note || '')}</td><td class="${k.type === 'credit' ? 'red-text' : 'green-text'}"><b>${k.type === 'credit' ? '+' : '-'} ${money(k.amount)}</b></td><td><b>${money(k.balance ?? customerBalance(c.id))}</b></td></tr>`).join('');
+                return rows.reverse().map(k => `<tr><td>${k.date ? dateTime(k.date) : '—'}</td><td>${esc(k.ref || '—')}</td><td><span class="badge ${k.type === 'credit' ? 'red' : 'green'}">${k.type === 'credit' ? 'Udhaar' : 'Payment'}</span></td><td>${esc(k.note || '')}</td><td class="${k.type === 'credit' ? 'red-text' : 'green-text'}"><b>${k.type === 'credit' ? '+' : '-'} ${money(k.amount)}</b></td><td><b>${money(k.balance ?? customerBalance(c.id))}</b></td></tr>`).join('');
             }
             function prefillPayment(cid) {
                 closeModal('customerModal');
@@ -3020,14 +3107,14 @@
                     return alert('Customer WhatsApp number is missing.');
                 const b = customerBalance(cid)
                   , logs = db.khata.filter(k => k.customerId === cid).slice(0, 8)
-                  , text = `Assalam-o-Alaikum ${c.name} \u{1F44B}\n\n*${db.business.name} \u{2014} Khata Statement*\nCurrent Balance: *Rs. ${b.toLocaleString()}*\n\nRecent activity:\n${logs.map(k => `${k.type === 'credit' ? '+ Udhaar' : '- Payment'} Rs. ${num(k.amount).toLocaleString()} \u{2014} ${k.note || ''}`).join('\n')}\n\nThank you.`;
+                  , text = `Assalam-o-Alaikum ${c.name} 👋\n\n*${db.business.name} — Khata Statement*\nCurrent Balance: *Rs. ${b.toLocaleString()}*\n\nRecent activity:\n${logs.map(k => `${k.type === 'credit' ? '+ Udhaar' : '- Payment'} Rs. ${num(k.amount).toLocaleString()} — ${k.note || ''}`).join('\n')}\n\nThank you.`;
                 window.open(`https://wa.me/${c.phone.replace(/\D/g, '').replace(/^0/, '92')}?text=${encodeURIComponent(text)}`, '_blank');
             }
 
             function renderInventory() {
                 const q = document.getElementById('itemSearch').value.toLowerCase();
                 const arr = db.products.filter(p => `${p.name} ${p.sku} ${p.category}`.toLowerCase().includes(q));
-                document.getElementById('inventoryBody').innerHTML = arr.map(p => `<tr><td><b>${esc(p.name)}</b><div class="tiny muted">${esc(p.unit || 'pcs')}</div></td><td>${esc(p.sku || '\u{2014}')}</td><td>${esc(p.category || 'General')}</td><td>${money(p.buy)}</td><td class="green-text"><b>${money(p.sale)}</b></td><td class="${p.stock <= p.low ? 'red-text' : 'green-text'}"><b>${p.stock}</b></td><td>${p.low}</td><td><button class="btn sm" onclick="editProduct('${p.id}')">Edit</button></td></tr>`).join('') || '<tr><td colspan="8" class="empty">No products found.</td></tr>';
+                document.getElementById('inventoryBody').innerHTML = arr.map(p => `<tr><td><b>${esc(p.name)}</b><div class="tiny muted">${esc(p.unit || 'pcs')}</div></td><td>${esc(p.sku || '—')}</td><td>${esc(p.category || 'General')}</td><td>${money(p.buy)}</td><td class="green-text"><b>${money(p.sale)}</b></td><td class="${p.stock <= p.low ? 'red-text' : 'green-text'}"><b>${p.stock}</b></td><td>${p.low}</td><td><button class="btn sm" onclick="editProduct('${p.id}')">Edit</button></td></tr>`).join('') || '<tr><td colspan="8" class="empty">No products found.</td></tr>';
             }
             function editProduct(pid) {
                 const p = db.products.find(x => x.id === pid);
@@ -3049,7 +3136,7 @@
                 const suppliers = {};
                 db.purchases.forEach(p => suppliers[p.supplier] = (suppliers[p.supplier] || 0) + p.total);
                 document.getElementById('supplierList').innerHTML = Object.entries(suppliers).map( ([n,v]) => `<div class="flex between small" style="padding:8px 0;border-bottom:1px solid var(--line)"><span>${esc(n)}</span><b>${money(v)}</b></div>`).join('') || '<div class="empty">No suppliers yet.</div>';
-                document.getElementById('purchaseBody').innerHTML = db.purchases.map(p => `<tr><td>${dateTime(p.date)}</td><td>${esc(p.supplier)}</td><td>${esc(p.invoice || '\u{2014}')}</td><td>${esc(p.productName)}</td><td>${p.qty}</td><td>${money(p.total)}</td><td>${esc(p.payment)}</td></tr>`).join('') || '<tr><td colspan="7" class="empty">No purchases recorded.</td></tr>';
+                document.getElementById('purchaseBody').innerHTML = db.purchases.map(p => `<tr><td>${dateTime(p.date)}</td><td>${esc(p.supplier)}</td><td>${esc(p.invoice || '—')}</td><td>${esc(p.productName)}</td><td>${p.qty}</td><td>${money(p.total)}</td><td>${esc(p.payment)}</td></tr>`).join('') || '<tr><td colspan="7" class="empty">No purchases recorded.</td></tr>';
             }
             function renderExpenses() {
                 const month = new Date().toISOString().slice(0, 7)
@@ -3177,7 +3264,7 @@
                 const c = db.customers.find(x => x.id === cid)
                   , b = customerBalance(cid)
                   , logs = db.khata.filter(k => k.customerId === cid);
-                document.getElementById('printArea').innerHTML = `<div style="max-width:760px;margin:20px auto;font-family:Arial"><h1>${esc(db.business.name)}</h1><h2>Khata Statement</h2><p><b>Customer:</b> ${esc(c.name)}<br><b>Phone:</b> ${esc(c.phone || '\u{2014}')}<br><b>Current Balance:</b> ${money(b)}</p><table style="width:100%;border-collapse:collapse"><tr><th style="text-align:left;border-bottom:1px solid #111;padding:8px">Date</th><th>Type</th><th>Reference</th><th style="text-align:right">Amount</th></tr>${logs.map(k => `<tr><td style="padding:8px;border-bottom:1px solid #ddd">${dateTime(k.date)}</td><td style="padding:8px;border-bottom:1px solid #ddd">${k.type}</td><td style="padding:8px;border-bottom:1px solid #ddd">${esc(k.ref || '')}</td><td style="text-align:right;padding:8px;border-bottom:1px solid #ddd">${money(k.amount)}</td></tr>`).join('')}</table></div>`;
+                document.getElementById('printArea').innerHTML = `<div style="max-width:760px;margin:20px auto;font-family:Arial"><h1>${esc(db.business.name)}</h1><h2>Khata Statement</h2><p><b>Customer:</b> ${esc(c.name)}<br><b>Phone:</b> ${esc(c.phone || '—')}<br><b>Current Balance:</b> ${money(b)}</p><table style="width:100%;border-collapse:collapse"><tr><th style="text-align:left;border-bottom:1px solid #111;padding:8px">Date</th><th>Type</th><th>Reference</th><th style="text-align:right">Amount</th></tr>${logs.map(k => `<tr><td style="padding:8px;border-bottom:1px solid #ddd">${dateTime(k.date)}</td><td style="padding:8px;border-bottom:1px solid #ddd">${k.type}</td><td style="padding:8px;border-bottom:1px solid #ddd">${esc(k.ref || '')}</td><td style="text-align:right;padding:8px;border-bottom:1px solid #ddd">${money(k.amount)}</td></tr>`).join('')}</table></div>`;
                 window.print();
                 document.getElementById('printArea').innerHTML = '';
             }
@@ -3385,246 +3472,7 @@
             }
             function renderRecentSales() {
                 const arr = db.sales.slice(0, 6);
-                document.getElementById('recentSales').innerHTML = arr.map(s => `<div class="flex between center" style="padding:10px 0;border-bottom:1px solid var(--line)"><div><b>${esc(s.invoice)}</b> <span class="muted">\u{2022} ${esc(s.customer)}</span><div class="tiny muted">${dateTime(s.date)}</div></div><div class="right"><b>${money(s.total)}</b><div class="tiny ${s.due ? 'red-text' : 'green-text'}">${s.due ? money(s.due) + ' due' : 'Paid'}</div></div></div>`).join('') || '<div class="empty">No sales yet.</div>'
-            }
-
-            // ================= SUBSCRIPTION / MULTI-USER MIDDLEWARE =================
-            const DD_SUB_KEY = 'digital_dokan_subscription_v1';
-            const DD_SESSION_KEY = 'digital_dokan_session_token_v1';
-            const DD_DEVICE_KEY = 'digital_dokan_device_id_v1';
-            const DD_DEMO_PLAN_EMAILS = {
-                'studiohub104@gmail.com': '7_days_trial',
-                'dokanrretailkhata@gmail.com': 'monthly_package',
-                'auramorapk@gmail.com': 'yearly_package'
-            };
-            const DD_PLAN_LIMITS = { '7_days_trial': 0, 'monthly_package': 3, 'yearly_package': 5 };
-            function getDeviceId(){
-                let v=localStorage.getItem(DD_DEVICE_KEY);
-                if(!v){v=id('device');localStorage.setItem(DD_DEVICE_KEY,v)}
-                return v;
-            }
-            function getAuthProfile(){
-                try{
-                    const raw=localStorage.getItem('digital_dokan_auth_v1');
-                    const a=raw?JSON.parse(raw):{};
-                    return a||{};
-                }catch(e){return {}}
-            }
-            function normalisePlan(p){
-                const x=String(p||'').toLowerCase().trim();
-                if(['trial','7_days_trial','7-days-trial','free_trial'].includes(x)) return '7_days_trial';
-                if(['monthly','monthly_package','pro_monthly'].includes(x)) return 'monthly_package';
-                if(['yearly','yearly_package','pro_yearly'].includes(x)) return 'yearly_package';
-                return x || '7_days_trial';
-            }
-            function isTrialPlan(){ return normalisePlan(db?.subscription?.plan_type)==='7_days_trial'; }
-            function getSubscription(){
-                const local=(()=>{try{return JSON.parse(localStorage.getItem(DD_SUB_KEY)||'null')}catch(e){return null}})();
-                const auth=getAuthProfile();
-                const email=String(auth.email||auth.user?.email||db?.subscription?.master_email||'').toLowerCase();
-                const demoPlan=DD_DEMO_PLAN_EMAILS[email];
-                const sub={...(db.subscription||{}),...(local||{})};
-                if(demoPlan && (!sub.plan_type || sub.plan_type==='7_days_trial')) sub.plan_type=demoPlan;
-                sub.plan_type=normalisePlan(sub.plan_type);
-                if(demoPlan && (!sub.master_email || sub.master_email===email)) sub.master_email=email;
-                // Trial gets a deterministic 7-day expiry on first use. Paid expiry must come from the server/profile.
-                if(sub.plan_type==='7_days_trial' && !sub.expiry_date){
-                    const start=Number(sub.trial_start||Date.now());
-                    sub.trial_start=start; sub.expiry_date=new Date(start+7*86400000).toISOString();
-                }
-                sub.max_sub_users=DD_PLAN_LIMITS[sub.plan_type] ?? 0;
-                db.subscription=sub;
-                return sub;
-            }
-            function subscriptionExpired(sub){
-                if(!sub?.expiry_date) return false;
-                const t=Date.parse(sub.expiry_date);
-                return Number.isFinite(t) && Date.now()>t;
-            }
-            function trialInvoiceLimitReached(sub){
-                return sub?.plan_type==='7_days_trial' && Number(sub.invoice_count||0)>=50;
-            }
-            function currentInvoiceCount(){ return Array.isArray(db.sales)?db.sales.length:Number(db.subscription?.invoice_count||0); }
-            function verifySubscriptionAccess(forSale=false){
-                const sub=getSubscription();
-                sub.invoice_count=Math.max(Number(sub.invoice_count||0),currentInvoiceCount());
-                const expired=subscriptionExpired(sub);
-                const invoiceLimit=trialInvoiceLimitReached(sub);
-                const blocked=expired || invoiceLimit;
-                if(blocked){
-                    showSubscriptionLock(invoiceLimit?'Trial invoice limit reached':'Subscription/Trial expired');
-                    return false;
-                }
-                if(forSale && sub.plan_type==='7_days_trial' && currentInvoiceCount()>=50){
-                    showSubscriptionLock('Trial invoice limit reached'); return false;
-                }
-                localStorage.setItem(DD_SUB_KEY,JSON.stringify(sub));
-                updateSubscriptionUI();
-                return true;
-            }
-            function showSubscriptionLock(reason){
-                const el=document.getElementById('subscriptionLock'); if(!el) return;
-                document.getElementById('subscriptionLockTitle').textContent=reason==='Trial invoice limit reached'?'Trial invoice limit reached':'Your Subscription/Trial has expired';
-                document.getElementById('subscriptionLockText').textContent='Your Subscription/Trial has expired or the trial invoice limit has been reached. Please contact support at +923257633875 to upgrade.';
-                el.classList.add('show');
-            }
-            function hideSubscriptionLock(){document.getElementById('subscriptionLock')?.classList.remove('show')}
-            function goToPricing(){ window.location.href='./index.html#pricing'; }
-            function signOutLocalSession(){
-                try{ if(window.DD_FIREBASE_AUTH){ import('https://www.gstatic.com/firebasejs/11.10.0/firebase-auth.js').then(m=>m.signOut(window.DD_FIREBASE_AUTH)).catch(()=>{}); } }catch(e){}
-                sessionStorage.removeItem(DD_SESSION_KEY);
-                localStorage.removeItem(DD_SESSION_KEY);
-                localStorage.removeItem('digital_dokan_auth_v1');
-                window.location.href='./index.html?auth=login';
-            }
-            function getSessionToken(){
-                let t=sessionStorage.getItem(DD_SESSION_KEY)||localStorage.getItem(DD_SESSION_KEY);
-                if(!t){t=id('sess');sessionStorage.setItem(DD_SESSION_KEY,t);localStorage.setItem(DD_SESSION_KEY,t)}
-                return t;
-            }
-            function enforceSingleSessionLocal(){
-                // Client-only fallback. Cross-device invalidation requires a server/Firebase session document.
-                const token=getSessionToken();
-                let record={token,deviceId:getDeviceId(),issuedAt:Date.now()};
-                try{
-                    const existing=JSON.parse(localStorage.getItem('digital_dokan_active_session_v1')||'null');
-                    if(existing && existing.token!==token && existing.deviceId===record.deviceId){
-                        sessionStorage.removeItem(DD_SESSION_KEY); localStorage.removeItem(DD_SESSION_KEY);
-                        showToast('Session replaced. Please sign in again.');
-                    }
-                    localStorage.setItem('digital_dokan_active_session_v1',JSON.stringify(record));
-                }catch(e){}
-            }
-            function canCreateSubUser(){
-                const sub=getSubscription();
-                if(sub.plan_type==='7_days_trial') return {ok:false,reason:'The 7-day trial does not include sub-users.'};
-                const count=(db.subUsers||[]).filter(x=>x.status!=='disabled').length;
-                const max=Number(sub.max_sub_users||0);
-                if(count>=max) return {ok:false,reason:`${sub.plan_type==='monthly_package'?3:5} user accounts are allowed on this plan.`};
-                return {ok:true,reason:''};
-            }
-            function addSubUser(){
-                const gate=canCreateSubUser(); if(!gate.ok) return alert(gate.reason);
-                const name=prompt('Sub-user name'); if(!name?.trim()) return;
-                const email=prompt('Sub-user email'); if(!email?.trim()) return;
-                const role=prompt('Role (Admin/Cashier)', 'Cashier')||'Cashier';
-                db.subUsers=db.subUsers||[];
-                db.subUsers.push({id:id('usr'),name:name.trim(),email:email.trim().toLowerCase(),role:role.trim(),status:'active',createdAt:new Date().toISOString()});
-                saveDB(); renderSubscriptionPanel(); showToast('Sub-user added');
-            }
-            function removeSubUser(uid){
-                const u=(db.subUsers||[]).find(x=>x.id===uid); if(!u)return;
-                if(confirm(`Disable ${u.name}?`)){u.status='disabled';u.updatedAt=new Date().toISOString();saveDB();renderSubscriptionPanel();showToast('Sub-user disabled')}
-            }
-            function renderSubscriptionPanel(){
-                const host=document.getElementById('subscriptionSettingsPanel'); if(!host)return;
-                const s=getSubscription(); const count=(db.subUsers||[]).filter(x=>x.status!=='disabled').length;
-                const max=s.plan_type==='7_days_trial'?0:Number(s.max_sub_users||0);
-                const expiry=s.expiry_date?new Date(s.expiry_date).toLocaleDateString('en-PK'):'Managed by cloud profile';
-                host.innerHTML=`<div class="subscription-banner"><div><b>${esc(s.master_email||'Cloud account')}</b><div class="tiny muted">Expiry: ${esc(expiry)} \u{2022} Invoices: ${currentInvoiceCount()}/50 on trial</div></div><div class="sub-meta"><span class="plan-badge">${esc(s.plan_type)}</span><span class="badge ${subscriptionExpired(s)?'red':'green'}">${subscriptionExpired(s)?'Expired':'Active'}</span></div></div>
-                <div class="grid g3"><div class="stat"><div class="stat-label">Plan</div><div class="stat-value" style="font-size:18px">${esc(s.plan_type)}</div></div><div class="stat"><div class="stat-label">Sub-users</div><div class="stat-value" style="font-size:18px">${count}/${max}</div></div><div class="stat"><div class="stat-label">Trial invoices</div><div class="stat-value" style="font-size:18px">${currentInvoiceCount()}/50</div></div></div>
-                <div class="actions" style="margin-top:12px"><button class="btn green" onclick="addSubUser()" ${max && count>=max?'disabled':''}>+ Add Sub-user</button><button class="btn" onclick="verifySubscriptionAccess(false)">Verify Subscription</button><button class="btn" onclick="goToPricing()">Pricing</button></div>
-                <div style="margin-top:14px">${(db.subUsers||[]).map(u=>`<div class="flex between center" style="padding:10px 0;border-bottom:1px solid var(--line)"><div><b>${esc(u.name)}</b><div class="tiny muted">${esc(u.email)} \u{2022} ${esc(u.role)}</div></div><button class="btn sm red" onclick="removeSubUser('${u.id}')">Disable</button></div>`).join('')||'<div class="empty">No sub-users added.</div>'}</div>
-                <div class="hint" style="margin-top:12px">For production, plan/expiry/user limits must be enforced in Firebase/your server too. Browser JavaScript alone can be bypassed.</div>`;
-            }
-            function updateSubscriptionUI(){
-                const s=getSubscription();
-                const pill=document.getElementById('trialPill');
-                if(pill){
-                    if(s.plan_type==='7_days_trial'){
-                        const left=s.expiry_date?Math.max(0,Math.ceil((Date.parse(s.expiry_date)-Date.now())/86400000)):0;
-                        pill.textContent=left>0?`Free Trial \u{2022} ${left} day${left===1?'':'s'} left`:'Trial Expired';
-                    }else pill.textContent=s.plan_type==='monthly_package'?'\u{2713} Monthly Pro':'\u{2713} Yearly Pro';
-                }
-                renderSubscriptionPanel();
-            }
-            async function verifyCloudSubscriptionProfile(){
-                // Optional Firebase hook. If a Firebase session exists, read the authoritative profile from:
-                // businesses/{businessId}/members/{uid} or users/{uid}. This function never accepts passwords from the client code.
-                try{
-                    const auth=window.cloudSync?.auth;
-                    const fs=window.cloudSync?.fs;
-                    if(!auth?.currentUser || !fs) return false;
-                    const {doc,getDoc}=await import('https://www.gstatic.com/firebasejs/11.10.0/firebase-firestore.js');
-                    const uid=auth.currentUser.uid;
-                    const businessId=db.cloud?.tenantId||db.cloud?.businessId||uid;
-                    const paths=[doc(fs,'businesses',businessId,'members',uid),doc(fs,'users',uid)];
-                    for(const ref of paths){
-                        const snap=await getDoc(ref);
-                        if(snap.exists()){
-                            const p=snap.data()||{};
-                            db.subscription={...(db.subscription||{}),...p,master_uid:uid,master_email:auth.currentUser.email||p.master_email||''};
-                            db.subscription.plan_type=normalisePlan(db.subscription.plan_type);
-                            db.subscription.max_sub_users=DD_PLAN_LIMITS[db.subscription.plan_type]??0;
-                            saveDB(); localStorage.setItem(DD_SUB_KEY,JSON.stringify(db.subscription));
-                            return true;
-                        }
-                    }
-                }catch(e){console.warn('Cloud subscription profile unavailable',e)}
-                return false;
-            }
-
-            async function initCloudSession(){
-                try{
-                    const cfg=window.DD_FIREBASE_CONFIG || (()=>{try{return JSON.parse(localStorage.getItem('dd_firebase_config')||'null')}catch(e){return null}})();
-                    if(!cfg?.projectId) return false;
-                    const [{initializeApp,getApps},{getAuth,setPersistence,browserLocalPersistence,onAuthStateChanged,signOut},{getFirestore,doc,getDoc,setDoc,onSnapshot}]=await Promise.all([
-                        import('https://www.gstatic.com/firebasejs/11.10.0/firebase-app.js'),
-                        import('https://www.gstatic.com/firebasejs/11.10.0/firebase-auth.js'),
-                        import('https://www.gstatic.com/firebasejs/11.10.0/firebase-firestore.js')
-                    ]);
-                    const app=getApps().length?getApps()[0]:initializeApp(cfg);
-                    const auth=getAuth(app);
-                    await setPersistence(auth,browserLocalPersistence).catch(()=>{});
-                    window.DD_FIREBASE_AUTH=auth;
-                    window.DD_FIRESTORE=getFirestore(app);
-                    onAuthStateChanged(auth, async user=>{
-                        if(!user) return;
-                        const fs=window.DD_FIRESTORE;
-                        const uid=user.uid;
-                        let profile=null;
-                        for(const ref of [doc(fs,'users',uid),doc(fs,'businesses',uid)]){
-                            try{const snap=await getDoc(ref);if(snap.exists()){profile=snap.data();break}}catch(e){}
-                        }
-                        if(profile){
-                            db.subscription={...(db.subscription||{}),...profile,master_uid:profile.master_uid||uid,master_email:user.email||profile.master_email||''};
-                            db.subscription.plan_type=normalisePlan(db.subscription.plan_type);
-                            db.subscription.max_sub_users=DD_PLAN_LIMITS[db.subscription.plan_type]??0;
-                            if(profile.businessId) db.cloud={...(db.cloud||{}),tenantId:profile.businessId};
-                            saveDB(); localStorage.setItem(DD_SUB_KEY,JSON.stringify(db.subscription));
-                        }else if(!db.subscription.master_email){
-                            db.subscription.master_uid=uid;db.subscription.master_email=user.email||'';saveDB();
-                        }
-                        if(isTrialPlan()){
-                            const businessId=db.cloud?.tenantId||db.cloud?.businessId||db.subscription.master_uid||uid;
-                            const sessionRef=doc(fs,'businesses',businessId,'security','activeSession');
-                            const token=getSessionToken();
-                            await setDoc(sessionRef,{token,uid,deviceId:getDeviceId(),updatedAt:Date.now()},{merge:false}).catch(()=>{});
-                            if(window.DD_ACTIVE_SESSION_UNSUB) window.DD_ACTIVE_SESSION_UNSUB();
-                            window.DD_ACTIVE_SESSION_UNSUB=onSnapshot(sessionRef,snap=>{
-                                const remote=snap.data();
-                                if(remote?.token && remote.token!==getSessionToken() && remote.uid===uid){
-                                    document.getElementById('sessionWarning')?.classList.add('show');
-                                    try{signOut(auth)}catch(e){}
-                                    signOutLocalSession();
-                                }
-                            });
-                        }
-                        updateSubscriptionUI();verifySubscriptionAccess(false);
-                    });
-                    return true;
-                }catch(e){console.warn('Firebase session adapter unavailable',e);return false}
-            }
-
-            function initSubscriptionMiddleware(){
-                getSubscription(); enforceSingleSessionLocal(); verifySubscriptionAccess(false); updateSubscriptionUI();
-                window.addEventListener('storage',e=>{
-                    if(e.key===DD_SESSION_KEY && e.newValue && e.newValue!==sessionStorage.getItem(DD_SESSION_KEY)){
-                        document.getElementById('sessionWarning')?.classList.add('show');
-                    }
-                    if(e.key===DD_SUB_KEY){ getSubscription(); updateSubscriptionUI(); verifySubscriptionAccess(false); }
-                });
-                window.addEventListener('online',()=>{verifyCloudSubscriptionProfile().then(()=>{updateSubscriptionUI();verifySubscriptionAccess(false)})});
+                document.getElementById('recentSales').innerHTML = arr.map(s => `<div class="flex between center" style="padding:10px 0;border-bottom:1px solid var(--line)"><div><b>${esc(s.invoice)}</b> <span class="muted">• ${esc(s.customer)}</span><div class="tiny muted">${dateTime(s.date)}</div></div><div class="right"><b>${money(s.total)}</b><div class="tiny ${s.due ? 'red-text' : 'green-text'}">${s.due ? money(s.due) + ' due' : 'Paid'}</div></div></div>`).join('') || '<div class="empty">No sales yet.</div>'
             }
 
             function refresh() {
@@ -3640,15 +3488,235 @@
                 renderExpenses();
                 renderReports();
                 loadSettings();
-                updateSubscriptionUI();
                 document.getElementById('invoiceTag').textContent = 'INV-' + db.invoice;
             }
             refresh();
             updateAccessUI();
-            initSubscriptionMiddleware();
-            initCloudSession();
-            verifyCloudSubscriptionProfile().then(()=>{updateSubscriptionUI();verifySubscriptionAccess(false)});
-            setInterval(()=>{ updateAccessUI(); verifySubscriptionAccess(false); }, 60000);
+            setInterval(updateAccessUI, 60000);
+
+            /* ===== ENGLISH ↔ URDU UI ===== */
+            const DD_URDU = {
+                'Home':'ہوم','Quick Billing / POS':'فوری بلنگ / POS','Dashboard':'ڈیش بورڈ','Sales & Invoices':'سیلز اور انوائسز','Customers & Khata':'کسٹمرز اور کھاتہ','Inventory & Stock':'انوینٹری اور اسٹاک','Purchases & Suppliers':'خریداری اور سپلائرز','Cash & Expenses':'کیش اور اخراجات','Reports':'رپورٹس','HR & Payroll':'ایچ آر اور پے رول','Settings & Backup':'سیٹنگز اور بیک اپ','Back to website':'ویب سائٹ پر واپس','+ Quick Invoice':'+ فوری انوائس','+ Customer':'+ کسٹمر','+ Product':'+ پروڈکٹ','Quick Billing / Checkout':'فوری بلنگ / چیک آؤٹ','Customer':'کسٹمر','WhatsApp / Phone':'واٹس ایپ / فون','Product / Barcode':'پروڈکٹ / بارکوڈ','Price (Rs)':'قیمت (روپے)','Qty':'مقدار','Discount (Rs)':'ڈسکاؤنٹ (روپے)','Payment Method':'ادائیگی کا طریقہ','Grand Total':'کل رقم','Paid Amount':'ادا شدہ رقم','Remaining Udhaar':'باقی ادھار','Save Sale':'سیل محفوظ کریں','Save + WhatsApp':'محفوظ کریں + واٹس ایپ','Udhaar':'ادھار','Print':'پرنٹ','Clear':'صاف کریں','Select a customer to view balance.':'بیلنس دیکھنے کے لیے کسٹمر منتخب کریں۔','Recent Sales':'حالیہ سیلز','View All':'سب دیکھیں','Dashboard':'ڈیش بورڈ','Last 7 Days Sales':'گزشتہ 7 دن کی سیلز','Business Snapshot':'کاروباری خلاصہ','Low Stock':'کم اسٹاک','Top Customers':'بہترین کسٹمرز','Top Products':'بہترین پروڈکٹس','Sales & Invoice History':'سیلز اور انوائس کی تاریخ','Export CSV':'CSV ایکسپورٹ','Add Customer':'کسٹمر شامل کریں','Add Product':'پروڈکٹ شامل کریں','Search customer or phone...':'کسٹمر یا فون تلاش کریں...','Search product, SKU, category...':'پروڈکٹ، SKU یا کیٹیگری تلاش کریں...','Purchases & Suppliers':'خریداری اور سپلائرز','Record Purchase':'خریداری درج کریں','Supplier':'سپلائر','Invoice #':'انوائس نمبر','Purchase Price':'خریداری قیمت','Sale Price':'فروخت قیمت','Opening Stock':'ابتدائی اسٹاک','Save Purchase & Add Stock':'خریداری محفوظ کریں اور اسٹاک بڑھائیں','Add Expense':'اخراجات شامل کریں','Category':'کیٹیگری','Amount (Rs)':'رقم (روپے)','Note':'نوٹ','Save Expense':'اخراجات محفوظ کریں','Business Profile':'کاروباری پروفائل','Business Name':'کاروبار کا نام','Phone':'فون','WhatsApp':'واٹس ایپ','Address':'پتہ','Invoice Footer':'انوائس فوٹر','Save Business Settings':'کاروباری سیٹنگز محفوظ کریں','Backup & Restore':'بیک اپ اور بحالی','Download Backup':'بیک اپ ڈاؤن لوڈ کریں','Restore Backup':'بیک اپ بحال کریں','Data Management':'ڈیٹا مینجمنٹ','Danger Zone':'خطرناک زون','Delete All Local Data':'تمام مقامی ڈیٹا حذف کریں','Attendance':'حاضری','Employees':'ملازمین','Monthly Payroll':'ماہانہ پے رول','Year History':'سالانہ ریکارڈ','Daily Attendance':'روزانہ حاضری','Arrival Time':'آنے کا وقت','Leaving Time':'جانے کا وقت','Status':'حالت','Late':'دیر','Deduction':'کٹوتی','Action':'ایکشن','Employees & Salary Rules':'ملازمین اور تنخواہ کے اصول','Monthly Payroll Calculator':'ماہانہ تنخواہ کیلکولیٹر','30 days per month':'مہینے کے 30 دن','Salary':'تنخواہ','Days Present':'حاضر دن','Absent':'غیر حاضر','Late Min':'دیر کے منٹ','Late Deduction':'دیر کی کٹوتی','Absent Deduction':'غیر حاضری کی کٹوتی','Net Pay':'خالص تنخواہ','Year Attendance & Payment History':'سالانہ حاضری اور ادائیگی ریکارڈ','Cloud Database & Multi-Branch':'کلاؤڈ ڈیٹا بیس اور ملٹی برانچ','Branches':'برانچز','Add Branch':'برانچ شامل کریں','Sign in & Sync':'سائن اِن اور سنک','Save Cloud Config':'کلاؤڈ کنفیگ محفوظ کریں','Sync Now':'ابھی سنک کریں','Pull Cloud Data':'کلاؤڈ ڈیٹا لیں','Push Local Data':'مقامی ڈیٹا کلاؤڈ پر بھیجیں'};
+            const DD_ORIG_TEXT=new WeakMap();
+            function applyLanguage(lang){
+                document.documentElement.lang=lang==='ur'?'ur':'en';
+                document.querySelectorAll('body *').forEach(el=>{
+                    if(el.children.length===0 && el.childNodes.length===1 && el.firstChild.nodeType===3){
+                        if(!DD_ORIG_TEXT.has(el))DD_ORIG_TEXT.set(el,el.textContent);
+                        const en=DD_ORIG_TEXT.get(el); el.textContent=lang==='ur'?(DD_URDU[en]||en):en;
+                    }
+                    ['placeholder','title','aria-label'].forEach(a=>{
+                        if(el.hasAttribute(a)){
+                            const key='__dd_'+a;
+                            if(!el.dataset[key])el.dataset[key]=el.getAttribute(a);
+                            const en=el.dataset[key]; if(lang==='ur')el.setAttribute(a,DD_URDU[en]||en); else el.setAttribute(a,en);
+                        }
+                    });
+                });
+                document.getElementById('langToggle').textContent=lang==='ur'?'English':'اردو';
+                localStorage.setItem('dd_lang',lang);
+            }
+            function toggleLanguage(){applyLanguage(localStorage.getItem('dd_lang')==='ur'?'en':'ur');}
+            setTimeout(()=>applyLanguage(localStorage.getItem('dd_lang')||'en'),50);
+            /* ===== HR, PAYROLL, CLOUD & MULTI-BRANCH EXTENSION ===== */
+            function ensureHR(){ db.employees ||= []; db.attendance ||= []; db.payrollAdjustments ||= []; db.branches ||= [{id:'main',name:'Main Branch',active:true}]; db.cloud ||= {projectId:'',tenantId:'',uid:'',email:'',enabled:false}; }
+            ensureHR();
+            function localDate(d=new Date()){ const x=new Date(d); x.setMinutes(x.getMinutes()-x.getTimezoneOffset()); return x.toISOString().slice(0,10); }
+            function minutes(t){ if(!t)return null; const [h,m]=String(t).split(':').map(Number); return h*60+m; }
+            function dailySalary(e){ return num(e.salary)/30; }
+            function scheduledMinutes(e){ return Math.max(1,(minutes(e.endTime)||1140)-(minutes(e.startTime)||600)); }
+            function attendanceFor(eid,date){ return db.attendance.find(a=>a.employeeId===eid && a.date===date); }
+            function calcAttendance(e,a){
+                const day=dailySalary(e); const scheduled=minutes(e.startTime)||600; const grace=num(e.graceMinutes||15);
+                const inMin=minutes(a.clockIn); const outMin=minutes(a.clockOut);
+                let late=0,lateDed=0, absentDed=0;
+                if(a.status==='absent'){ absentDed=day; }
+                else if(inMin!=null){ late=Math.max(0,inMin-(scheduled+grace)); lateDed = e.lateMethod==='daily_fraction' ? day*(late/scheduledMinutes(e)) : late*num(e.latePerMinute||0); }
+                const worked=(inMin!=null&&outMin!=null)?Math.max(0,outMin-inMin):0;
+                return {late,lateDed,absentDed,worked};
+            }
+            function payrollFor(e,ym){
+                const start=new Date(ym+'-01T00:00:00'); const end=new Date(start); end.setMonth(end.getMonth()+1);
+                const daysInMonth=new Date(start.getFullYear(),start.getMonth()+1,0).getDate();
+                const rows=db.attendance.filter(a=>a.employeeId===e.id&&a.date>=ym+'-01'&&a.date<localDate(end));
+                const present=rows.filter(a=>a.status!=='absent').length, absent=rows.filter(a=>a.status==='absent').length;
+                let lateMin=0,lateDed=0,absentDed=0;
+                rows.forEach(a=>{const c=calcAttendance(e,a);lateMin+=c.late;lateDed+=c.lateDed;absentDed+=c.absentDed;});
+                const other=num((db.payrollAdjustments||[]).filter(x=>x.employeeId===e.id&&x.month===ym).reduce((a,x)=>a+x.amount,0));
+                const net=Math.max(0,num(e.salary)-lateDed-absentDed+other);
+                return {present,absent,lateMin,lateDed,absentDed,other,net,daysInMonth};
+            }
+            function hrTab(tab,btn){
+                ['attendance','employees','payroll','year'].forEach(x=>document.getElementById('hr'+x.charAt(0).toUpperCase()+x.slice(1)+'Tab').style.display=x===tab?'block':'none');
+                document.querySelectorAll('#view-hr .tabs .btn').forEach(x=>x.classList.remove('active')); if(btn)btn.classList.add('active');
+                renderHR();
+            }
+            function openHRModal(type,employeeId){
+                const e=employeeId?db.employees.find(x=>x.id===employeeId):null, today=localDate();
+                const f=document.getElementById('hrForm'); document.getElementById('hrModalTitle').textContent=type==='employee'?(e?'Edit Employee':'Add Employee'):'Record Attendance';
+                if(type==='employee'){
+                    f.innerHTML=`<div class="grid g2"><div class="field"><label>Employee Name *</label><input class="input" id="heName" required value="${esc(e?.name||'')}"></div><div class="field"><label>Role</label><input class="input" id="heRole" value="${esc(e?.role||'Cashier')}"></div></div>
+                    <div class="grid g3"><div class="field"><label>Monthly Salary (Rs) *</label><input class="input" id="heSalary" type="number" min="0" required value="${e?.salary||''}"></div><div class="field"><label>Daily Salary / 30</label><div class="input" id="heDaily">Rs. 0</div></div><div class="field"><label>Join Date</label><input class="input" id="heJoin" type="date" value="${e?.joinDate||today}"></div></div>
+                    <div class="grid g2"><div class="field"><label>Start Time</label><input class="input" id="heStart" type="time" value="${e?.startTime||'09:00'}"></div><div class="field"><label>End Time</label><input class="input" id="heEnd" type="time" value="${e?.endTime||'18:00'}"></div></div>
+                    <div class="grid g2"><div class="field"><label>Late Grace (minutes)</label><input class="input" id="heGrace" type="number" min="0" value="${e?.graceMinutes??15}"></div><div class="field"><label>Late Cut / Minute (Rs)</label><input class="input" id="heLate" type="number" min="0" step="0.01" value="${e?.latePerMinute??(e? (num(e.salary)/30/Math.max(1,540)):0).toFixed(2)}"></div></div>
+                    <div class="field"><label>Weekly Off</label><select class="select" id="heOff"><option>Sunday</option><option>Monday</option><option>Saturday</option><option>None</option></select></div>
+                    <button class="btn green">Save Employee</button>`;
+                    const sal=document.getElementById('heSalary'); const daily=()=>document.getElementById('heDaily').textContent=money(num(sal.value)/30); sal.oninput=daily; daily();
+                    f.onsubmit=ev=>{ev.preventDefault(); const obj={id:e?.id||id('emp'),name:document.getElementById('heName').value.trim(),role:document.getElementById('heRole').value.trim(),salary:num(document.getElementById('heSalary').value),joinDate:document.getElementById('heJoin').value,startTime:document.getElementById('heStart').value,endTime:document.getElementById('heEnd').value,graceMinutes:num(document.getElementById('heGrace').value),latePerMinute:num(document.getElementById('heLate').value),lateMethod:'per_minute',weeklyOff:document.getElementById('heOff').value}; const i=db.employees.findIndex(x=>x.id===obj.id); if(i>=0)db.employees[i]=obj;else db.employees.push(obj); saveDB();closeModal('hrModal');refresh();renderHR();showToast('Employee saved');};
+                }else{
+                    const empOpts=db.employees.map(x=>`<option value="${x.id}">${esc(x.name)}</option>`).join('');
+                    f.innerHTML=`<div class="grid g2"><div class="field"><label>Employee</label><select class="select" id="haEmp">${empOpts}</select></div><div class="field"><label>Date</label><input class="input" id="haDate" type="date" value="${today}"></div></div>
+                    <div class="grid g2"><div class="field"><label>Arrival Time</label><input class="input" id="haIn" type="time" value="09:00"></div><div class="field"><label>Leaving Time</label><input class="input" id="haOut" type="time" value="18:00"></div></div>
+                    <div class="grid g2"><div class="field"><label>Status</label><select class="select" id="haStatus"><option>present</option><option>absent</option><option>leave</option></select></div><div class="field"><label>Note</label><input class="input" id="haNote"></div></div><button class="btn green">Save Attendance</button>`;
+                    f.onsubmit=ev=>{ev.preventDefault();const eid=document.getElementById('haEmp').value,date=document.getElementById('haDate').value;const obj={id:id('att'),employeeId:eid,date,clockIn:document.getElementById('haIn').value,clockOut:document.getElementById('haOut').value,status:document.getElementById('haStatus').value,note:document.getElementById('haNote').value.trim()};const old=attendanceFor(eid,date);if(old)obj.id=old.id;const i=db.attendance.findIndex(x=>x.employeeId===eid&&x.date===date);if(i>=0)db.attendance[i]=obj;else db.attendance.unshift(obj);saveDB();closeModal('hrModal');refresh();renderHR();showToast('Attendance saved');};
+                }
+                openModal('hrModal');
+            }
+            function renderHR(){
+                ensureHR(); const today=localDate(), ym=today.slice(0,7);
+                const dateEl=document.getElementById('hrAttendanceDate'); if(dateEl&&!dateEl.value)dateEl.value=today;
+                const monthEl=document.getElementById('hrPayrollMonth'); if(monthEl&&!monthEl.value)monthEl.value=ym;
+                document.getElementById('hrEmployees').textContent=db.employees.length;
+                const todays=db.attendance.filter(a=>a.date===today), present=todays.filter(a=>a.status!=='absent').length, late=todays.reduce((n,a)=>n+calcAttendance(db.employees.find(e=>e.id===a.employeeId)||{},a).late>0,0);
+                document.getElementById('hrPresent').textContent=present; document.getElementById('hrLate').textContent=late;
+                const pay= num(db.employees.reduce((n,e)=>n+payrollFor(e,ym).net,0)); document.getElementById('hrPayroll').textContent=money(pay);
+                const d=dateEl?.value||today, q=(document.getElementById('hrAttendanceSearch')?.value||'').toLowerCase();
+                document.getElementById('hrAttendanceBody').innerHTML=db.attendance.filter(a=>a.date===d).filter(a=>(db.employees.find(e=>e.id===a.employeeId)?.name||'').toLowerCase().includes(q)).map(a=>{const e=db.employees.find(x=>x.id===a.employeeId)||{},c=calcAttendance(e,a);return `<tr><td>${esc(e.name||'—')}</td><td>${a.date}</td><td>${a.clockIn||'—'}</td><td>${a.clockOut||'—'}</td><td><span class="badge ${a.status==='absent'?'red':'green'}">${esc(a.status)}</span></td><td>${c.late} min</td><td>${money(c.lateDed+c.absentDed)}</td><td><button class="btn sm red" onclick="deleteAttendance('${a.id}')">Delete</button></td></tr>`}).join('')||'<tr><td colspan="8" class="empty">No attendance for this date.</td></tr>';
+                document.getElementById('hrTodayList').innerHTML=db.employees.map(e=>{const a=attendanceFor(e.id,today),c=a?calcAttendance(e,a):null;return `<div class="flex between small" style="padding:9px 0;border-bottom:1px solid var(--line)"><span><b>${esc(e.name)}</b><br><span class="muted">${a?(a.clockIn||'—')+' → '+(a.clockOut||'—'):'Not marked'}</span></span><span class="${c?.late?'amber-text':'green-text'}">${a?(c.late?c.late+'m late':a.status):'—'}</span></div>`}).join('')||'<div class="empty">Add employees first.</div>';
+                document.getElementById('hrEmployeeBody').innerHTML=db.employees.map(e=>`<tr><td>${esc(e.name)}</td><td>${esc(e.role||'')}</td><td>${money(e.salary)}</td><td>${money(dailySalary(e))}</td><td>${e.startTime||'—'} - ${e.endTime||'—'}</td><td>${e.graceMinutes||0}m</td><td>${e.joinDate||'—'}</td><td><button class="btn sm" onclick="openHRModal('employee','${e.id}')">Edit</button> <button class="btn sm red" onclick="deleteEmployee('${e.id}')">Delete</button></td></tr>`).join('')||'<tr><td colspan="8" class="empty">No employees yet.</td></tr>';
+                const pm=document.getElementById('hrPayrollMonth')?.value||ym;
+                document.getElementById('hrPayrollBody').innerHTML=db.employees.map(e=>{const p=payrollFor(e,pm);return `<tr><td><b>${esc(e.name)}</b><div class="tiny muted">${esc(e.role||'')}</div></td><td>${money(e.salary)}</td><td>${p.present}</td><td>${p.absent}</td><td>${p.lateMin}</td><td class="amber-text">${money(p.lateDed)}</td><td class="red-text">${money(p.absentDed)}</td><td>${money(p.other)}</td><td class="green-text"><b>${money(p.net)}</b></td><td><span class="badge green">Calculated</span></td></tr>`}).join('')||'<tr><td colspan="10" class="empty">No employees yet.</td></tr>';
+                renderHRYear();
+            }
+            function deleteAttendance(x){if(confirm('Delete attendance record?')){db.attendance=db.attendance.filter(a=>a.id!==x);saveDB();refresh();renderHR();}}
+            function deleteEmployee(x){if(confirm('Delete employee and attendance?')){db.employees=db.employees.filter(e=>e.id!==x);db.attendance=db.attendance.filter(a=>a.employeeId!==x);saveDB();refresh();renderHR();}}
+            function renderHRYear(){
+                const ys=document.getElementById('hrYear'), es=document.getElementById('hrYearEmployee'); if(!ys||!es)return;
+                const year=ys.value||String(new Date().getFullYear()); if(!ys.options.length)for(let y=new Date().getFullYear()-1;y<=new Date().getFullYear()+1;y++)ys.add(new Option(y,y));
+                es.innerHTML='<option value="">All Employees</option>'+db.employees.map(e=>`<option value="${e.id}">${esc(e.name)}</option>`).join('');
+                const eid=es.value||'';let rows=[];
+                for(let m=1;m<=12;m++){const ym=`${year}-${String(m).padStart(2,'0')}`;db.employees.filter(e=>!eid||e.id===eid).forEach(e=>{const p=payrollFor(e,ym);if(p.present||p.absent||p.lateMin)rows.push(`<tr><td>${ym}</td><td>${esc(e.name)}</td><td>${p.present}</td><td>${p.absent}</td><td>${p.lateMin}</td><td>${money(p.lateDed+p.absentDed)}</td><td class="green-text"><b>${money(p.net)}</b></td></tr>`)})}
+                document.getElementById('hrYearBody').innerHTML=rows.join('')||'<tr><td colspan="7" class="empty">No records for selected year.</td></tr>';
+            }
+            function printPayroll(){const m=document.getElementById('hrPayrollMonth')?.value||localDate().slice(0,7);let html=`<h2>Digital Dokan — Payroll ${m}</h2><table style="width:100%;border-collapse:collapse"><tr><th>Employee</th><th>Salary</th><th>Present</th><th>Absent</th><th>Late Cut</th><th>Absent Cut</th><th>Net Pay</th></tr>`;db.employees.forEach(e=>{const p=payrollFor(e,m);html+=`<tr><td>${esc(e.name)}</td><td>${money(e.salary)}</td><td>${p.present}</td><td>${p.absent}</td><td>${money(p.lateDed)}</td><td>${money(p.absentDed)}</td><td>${money(p.net)}</td></tr>`});document.getElementById('printArea').innerHTML=html+'</table>';window.print();}
+            function exportHRYear(){const rows=[['Date','Employee','Status','In','Out','Late Minutes','Deduction','Note']];db.attendance.forEach(a=>{const e=db.employees.find(x=>x.id===a.employeeId);const c=e?calcAttendance(e,a):{};rows.push([a.date,e?.name||'',a.status,a.clockIn||'',a.clockOut||'',c.late||0,(c.lateDed||0)+(c.absentDed||0),a.note||'']);});downloadCSV('hr-attendance.csv',rows);}
+            function addBranch(){const name=prompt('Branch name');if(!name)return;db.branches.push({id:id('branch'),name:name.trim(),active:true});saveDB();renderBranches();showToast('Branch added');}
+            function renderBranches(){const el=document.getElementById('branchList');if(!el)return;el.innerHTML=(db.branches||[]).map(b=>`<div class="flex between center" style="padding:10px 0;border-bottom:1px solid var(--line)"><span><b>${esc(b.name)}</b> ${b.active?'<span class="badge green">Active</span>':''}</span><button class="btn sm" onclick="setBranch('${b.id}')">Use Branch</button></div>`).join('');}
+            function setBranch(id){db.branches.forEach(b=>b.active=b.id===id);db.activeBranchId=id;saveDB();renderBranches();showToast('Active branch changed');}
+            function syncNow(){if(window.cloudSync?.ready&&db.cloud?.uid)cloudPush();else showToast('Cloud is not connected — local data is safe in this browser');}
+            window.addEventListener('online',()=>{if(window.cloudSync?.ready&&typeof cloudPush==='function')cloudPush();});
+            renderHR(); renderBranches();
+
+            /* Firebase cloud adapter. Add your Firebase web config in this file or expose it as window.DD_FIREBASE_CONFIG. */
+            window.DD_FIREBASE_CONFIG = (()=>{try{return JSON.parse(localStorage.getItem('dd_firebase_config')||'null')}catch(e){return null}})() || {apiKey:'',authDomain:'',projectId:'',storageBucket:'',messagingSenderId:'',appId:''};
+            window.cloudSync={ready:false};
+            async function initCloud(){
+                const cfg=window.DD_FIREBASE_CONFIG;
+                if(!cfg.projectId)return;
+                try{
+                    const [{initializeApp},{getAuth,GoogleAuthProvider,signInWithPopup,onAuthStateChanged},{getFirestore,doc,setDoc,getDoc,enableIndexedDbPersistence}]=await Promise.all([
+                        import('https://www.gstatic.com/firebasejs/11.10.0/firebase-app.js'),
+                        import('https://www.gstatic.com/firebasejs/11.10.0/firebase-auth.js'),
+                        import('https://www.gstatic.com/firebasejs/11.10.0/firebase-firestore.js')
+                    ]);
+                    const app=initializeApp(cfg),auth=getAuth(app),fs=getFirestore(app); try{await enableIndexedDbPersistence(fs)}catch(e){}
+                    window.cloudSync.ready=true; window.cloudSync.auth=auth; window.cloudSync.fs=fs; window.cloudSync.doc=doc; window.cloudSync.setDoc=setDoc; window.cloudSync.getDoc=getDoc; window.cloudSync.provider=GoogleAuthProvider; window.cloudSync.signInWithPopup=signInWithPopup;
+                    onAuthStateChanged(auth,u=>{db.cloud.uid=u?.uid||'';db.cloud.email=u?.email||'';db.cloud.enabled=!!u;saveDB();document.getElementById('cloudStatus').textContent=u?('Cloud • '+u.email):'Cloud ready';});
+                }catch(e){console.warn('Cloud setup failed',e);showToast('Cloud setup needs Firebase configuration');}
+            }
+            async function startGoogleCloud(){
+                if(!window.cloudSync.ready){await initCloud();}
+                if(!window.cloudSync.ready){showToast('Add Firebase web config first');return;}
+                try{const res=await window.cloudSync.signInWithPopup(window.cloudSync.auth,new window.cloudSync.provider());db.cloud.uid=res.user.uid;db.cloud.email=res.user.email;db.cloud.enabled=true;saveDB();await cloudPull();showToast('Google account connected and data synced');}catch(e){console.error(e);showToast('Google sign-in was cancelled or blocked');}
+            }
+            function cloudRef(){const tenant=db.cloud.tenantId||db.cloud.uid;if(!tenant)return null;return window.cloudSync.doc(window.cloudSync.fs,'businesses',tenant);}
+            async function cloudPush(){if(!window.cloudSync.ready||!db.cloud?.uid){showToast('Connect Google account first');return;}const ref=cloudRef();if(!ref)return;try{await window.cloudSync.setDoc(ref,{ownerUid:db.cloud.uid,ownerEmail:db.cloud.email,updatedAt:Date.now(),data:db},{merge:false});showToast('Cloud backup saved');}catch(e){console.error(e);showToast('Cloud save failed');}}
+            async function cloudPull(){if(!window.cloudSync.ready||!db.cloud?.uid){showToast('Connect Google account first');return;}const ref=cloudRef();if(!ref)return;try{const snap=await window.cloudSync.getDoc(ref);if(!snap.exists()){await cloudPush();return;}const remote=snap.data().data;if(remote){db=mergeDB(remote);localStorage.setItem(KEY,JSON.stringify(db));refresh();renderHR();renderBranches();showToast('Cloud data loaded on this device');}}catch(e){console.error(e);showToast('Cloud load failed');}}
+            /* Wrap saves so normal POS/Khata/Inventory actions also queue a cloud write when connected. */
+            const _localSaveDB=saveDB;
+            saveDB=function(){_localSaveDB(); if(window.cloudSync?.ready&&db.cloud?.uid){clearTimeout(window.__cloudSaveTimer);window.__cloudSaveTimer=setTimeout(()=>cloudPush(),700);}};
+            document.getElementById('cloudTenantId')?.addEventListener('change',e=>{db.cloud.tenantId=e.target.value.trim();saveDB();});
+            function saveCloudConfig(){
+                try{
+                    const cfg=JSON.parse(document.getElementById('cloudConfig').value.trim());
+                    if(!cfg.projectId||!cfg.apiKey||!cfg.appId) throw new Error('Incomplete Firebase config');
+                    window.DD_FIREBASE_CONFIG=cfg; localStorage.setItem('dd_firebase_config',JSON.stringify(cfg));
+                    db.cloud.projectId=cfg.projectId; saveDB(); showToast('Cloud configuration saved. Now sign in.');
+                }catch(e){alert('Please paste the complete Firebase Web App config JSON.')}
+            }
+            function loadCloudSettings(){
+                if(document.getElementById('cloudConfig')) document.getElementById('cloudConfig').value=window.DD_FIREBASE_CONFIG?.projectId?JSON.stringify(window.DD_FIREBASE_CONFIG,null,2):'';
+                if(document.getElementById('cloudTenantId')) document.getElementById('cloudTenantId').value=db.cloud?.tenantId||'';
+                if(document.getElementById('cloudAccount')) document.getElementById('cloudAccount').textContent=db.cloud?.email||'Not connected';
+            }
+            loadCloudSettings();
+            /* For deployment, replace DD_FIREBASE_CONFIG with the Firebase Web App config from your own project. */
+
+            /* ================= V10 ACCOUNT / SUBSCRIPTION / SESSION LAYER ================= */
+            const DD_SUB_KEY='digital_dokan_subscription_v1';
+            const DD_SESSION_KEY='digital_dokan_session_token_v1';
+            const DD_DEVICE_KEY='digital_dokan_device_id_v1';
+            const DD_AUTH_KEY='digital_dokan_auth_v1';
+            const DD_DEMO_ACCOUNTS={
+                'studiohub104@gmail.com':{plan:'7_days_trial',passwordHash:'31c8b12e1e316886219d63f848416ce3a64543d521ab96fcbfecc4f5cc523d5c'},
+                'dokanrretailkhata@gmail.com':{plan:'monthly_package',passwordHash:'5625028af06279c14cb50ee9e6d8bda72ba76d3a16ede0a367a8fc9ed606faa9'},
+                'auramorapk@gmail.com':{plan:'yearly_package',passwordHash:'b72f8e9384c4e46259dacee5acc7e8439c824af3dced992abaa46454805d3fec'}
+            };
+            const DD_PLAN_LIMITS={'7_days_trial':0,'monthly_package':3,'yearly_package':5};
+            function ddNormPlan(p){const x=String(p||'').toLowerCase().trim();if(['trial','7_days_trial','7-days-trial','free_trial'].includes(x))return'7_days_trial';if(['monthly','monthly_package','pro_monthly'].includes(x))return'monthly_package';if(['yearly','yearly_package','pro_yearly'].includes(x))return'yearly_package';return x||'7_days_trial'}
+            function ddDeviceId(){let x=localStorage.getItem(DD_DEVICE_KEY);if(!x){x=id('device');localStorage.setItem(DD_DEVICE_KEY,x)}return x}
+            function ddSessionToken(){let x=sessionStorage.getItem(DD_SESSION_KEY);if(!x){x=id('session');sessionStorage.setItem(DD_SESSION_KEY,x)}return x}
+            function ddAuth(){try{return JSON.parse(localStorage.getItem(DD_AUTH_KEY)||'null')}catch(e){return null}}
+            function ddHash(s){return crypto.subtle.digest('SHA-256',new TextEncoder().encode(String(s))).then(b=>Array.from(new Uint8Array(b)).map(x=>x.toString(16).padStart(2,'0')).join(''))}
+            function ddSetAuth(email,plan,uid=''){const a={email:String(email).toLowerCase(),plan_type:ddNormPlan(plan),uid:uid||'',loggedInAt:Date.now()};localStorage.setItem(DD_AUTH_KEY,JSON.stringify(a));return a}
+            function ddExpiryFor(plan,start){const days=plan==='7_days_trial'?7:plan==='monthly_package'?30:365;return new Date(start+days*86400000).toISOString()}
+            function ddGetSub(){
+                const auth=ddAuth()||{};const email=String(auth.email||db.subscription?.master_email||'').toLowerCase();const demo=DD_DEMO_ACCOUNTS[email];
+                const saved=(()=>{try{return JSON.parse(localStorage.getItem(DD_SUB_KEY)||'null')}catch(e){return null}})()||{};
+                const sub={...(db.subscription||{}),...saved};const plan=ddNormPlan(demo?.plan||sub.plan_type||auth.plan_type);sub.plan_type=plan;sub.master_email=email;sub.master_uid=sub.master_uid||auth.uid||'';sub.max_sub_users=DD_PLAN_LIMITS[plan];
+                if(!sub.trial_start){sub.trial_start=Date.now();sub.expiry_date=ddExpiryFor(plan,sub.trial_start)}
+                if(!sub.expiry_date)sub.expiry_date=ddExpiryFor(plan,sub.trial_start||Date.now());
+                sub.invoice_count=Math.max(Number(sub.invoice_count||0),Array.isArray(db.sales)?db.sales.length:0);db.subscription=sub;localStorage.setItem(DD_SUB_KEY,JSON.stringify(sub));return sub;
+            }
+            function ddExpired(s){const t=Date.parse(s?.expiry_date||'');return Number.isFinite(t)&&Date.now()>t}
+            function ddTrialLimit(s){return s?.plan_type==='7_days_trial'&&Number(s.invoice_count||0)>=50}
+            function verifySubscriptionAccess(forSale=false){const s=ddGetSub();s.invoice_count=Math.max(Number(s.invoice_count||0),Array.isArray(db.sales)?db.sales.length:0);const blocked=ddExpired(s)||ddTrialLimit(s);if(blocked){showSubscriptionLock(ddTrialLimit(s)?'Trial invoice limit reached':'Your Subscription/Trial has expired');return false}if(forSale&&s.plan_type==='7_days_trial'&&s.invoice_count>=50){showSubscriptionLock('Trial invoice limit reached');return false}localStorage.setItem(DD_SUB_KEY,JSON.stringify(s));return true}
+            function showSubscriptionLock(reason){const e=document.getElementById('subscriptionLock');if(!e)return;document.getElementById('subscriptionLockTitle').textContent=reason==='Trial invoice limit reached'?'Trial invoice limit reached':'Your Subscription/Trial has expired';document.getElementById('subscriptionLockText').textContent='Your Subscription/Trial has expired or the trial invoice limit has been reached. Please contact support at +923257633875 to upgrade.';e.classList.add('show')}
+            function hideSubscriptionLock(){document.getElementById('subscriptionLock')?.classList.remove('show')}
+            function goToPricing(){window.location.href='./index.html#pricing'}
+            function canCreateSubUser(){const s=ddGetSub();if(s.plan_type==='7_days_trial')return{ok:false,reason:'The 7-day trial does not include sub-users.'};const count=(db.subUsers||[]).filter(x=>x.status!=='disabled').length;const max=Number(s.max_sub_users||0);return count>=max?{ok:false,reason:`This ${s.plan_type==='monthly_package'?'Monthly':'Yearly'} plan allows a maximum of ${max} users.`}:{ok:true,reason:''}}
+            function addSubUser(){const g=canCreateSubUser();if(!g.ok)return alert(g.reason);const name=prompt('Sub-user name');if(!name?.trim())return;const email=prompt('Sub-user email');if(!email?.trim())return;const role=prompt('Role (Admin/Cashier)','Cashier')||'Cashier';db.subUsers=db.subUsers||[];db.subUsers.push({id:id('usr'),name:name.trim(),email:email.trim().toLowerCase(),role:role.trim(),status:'active',createdAt:new Date().toISOString(),branchId:db.activeBranchId||'main'});saveDB();renderSubscriptionPanel();showToast('Sub-user added')}
+            function removeSubUser(uid){const u=(db.subUsers||[]).find(x=>x.id===uid);if(u&&confirm(`Disable ${u.name}?`)){u.status='disabled';u.updatedAt=new Date().toISOString();saveDB();renderSubscriptionPanel();showToast('Sub-user disabled')}}
+            function renderSubscriptionPanel(){const h=document.getElementById('subscriptionSettingsPanel');if(!h)return;const s=ddGetSub();const count=(db.subUsers||[]).filter(x=>x.status!=='disabled').length;const max=s.plan_type==='7_days_trial'?0:Number(s.max_sub_users||0);const expiry=s.expiry_date?new Date(s.expiry_date).toLocaleDateString('en-PK'):'—';h.innerHTML=`<div class="subscription-banner"><div><b>${esc(s.master_email||'Account')}</b><div class="tiny muted">Expiry: ${esc(expiry)} • Trial invoices: ${s.invoice_count}/50</div></div><div class="sub-meta"><span class="plan-badge">${esc(s.plan_type)}</span><span class="badge ${ddExpired(s)?'red':'green'}">${ddExpired(s)?'Expired':'Active'}</span></div></div><div class="grid g3"><div class="stat"><div class="stat-label">Plan</div><div class="stat-value" style="font-size:18px">${esc(s.plan_type)}</div></div><div class="stat"><div class="stat-label">Users</div><div class="stat-value" style="font-size:18px">${count}/${max}</div></div><div class="stat"><div class="stat-label">Trial invoices</div><div class="stat-value" style="font-size:18px">${s.invoice_count}/50</div></div></div><div class="actions" style="margin-top:12px"><button class="btn green" onclick="addSubUser()" ${max&&count>=max?'disabled':''}>+ Add Sub-user</button><button class="btn" onclick="verifySubscriptionAccess(false)">Verify Subscription</button><button class="btn" onclick="goToPricing()">Pricing</button><button class="btn" onclick="signOutLocalSession()">Sign Out</button></div><div style="margin-top:14px">${(db.subUsers||[]).map(u=>`<div class="flex between center" style="padding:10px 0;border-bottom:1px solid var(--line)"><div><b>${esc(u.name)}</b><div class="tiny muted">${esc(u.email)} • ${esc(u.role)}</div></div><button class="btn sm red" onclick="removeSubUser('${u.id}')">Disable</button></div>`).join('')||'<div class="empty">No sub-users added.</div>'}</div>`}
+            function updateSubscriptionUI(){const s=ddGetSub();const pill=document.getElementById('trialPill');if(pill){if(s.plan_type==='7_days_trial'){const left=Math.max(0,Math.ceil((Date.parse(s.expiry_date)-Date.now())/86400000));pill.textContent=left?`Free Trial • ${left} day${left===1?'':'s'} left`:'Trial Expired'}else pill.textContent=s.plan_type==='monthly_package'?'✓ Monthly Pro':'✓ Yearly Pro'}renderSubscriptionPanel()}
+            async function ddFirebaseInit(){
+                const cfg=window.DD_FIREBASE_CONFIG;if(!cfg?.projectId)return false;try{
+                    const [{initializeApp,getApps},{getAuth,setPersistence,browserLocalPersistence,signInWithEmailAndPassword,onAuthStateChanged,signOut},{getFirestore,doc,getDoc,setDoc,enableIndexedDbPersistence}]=await Promise.all([import('https://www.gstatic.com/firebasejs/11.10.0/firebase-app.js'),import('https://www.gstatic.com/firebasejs/11.10.0/firebase-auth.js'),import('https://www.gstatic.com/firebasejs/11.10.0/firebase-firestore.js')]);
+                    const app=getApps().length?getApps()[0]:initializeApp(cfg);const auth=getAuth(app);await setPersistence(auth,browserLocalPersistence).catch(()=>{});const fs=getFirestore(app);await enableIndexedDbPersistence(fs).catch(()=>{});window.DD_FB={auth,fs,doc,getDoc,setDoc,signInWithEmailAndPassword,signOut};
+                    onAuthStateChanged(auth,u=>{if(u){db.cloud.uid=u.uid;db.cloud.email=u.email||'';db.cloud.enabled=true;const a=ddAuth()||{};ddSetAuth(u.email||a.email||'',a.plan_type||ddGetSub().plan_type,u.uid);db.subscription.master_uid=u.uid;db.subscription.master_email=u.email||db.subscription.master_email;saveDB();document.getElementById('cloudStatus')&&(document.getElementById('cloudStatus').textContent='Cloud • '+u.email);ddBindSession(u.uid).catch(()=>{});}});return true;
+                }catch(e){console.warn('Firebase init failed',e);return false}}
+            async function ddBindSession(uid){const s=ddGetSub();if(s.plan_type!=='7_days_trial'||!window.DD_FB)return;const tenant=db.cloud?.tenantId||uid;const ref=window.DD_FB.doc(window.DD_FB.fs,'businesses',tenant,'security','activeSession');const token=ddSessionToken();await window.DD_FB.setDoc(ref,{token,uid,deviceId:ddDeviceId(),updatedAt:Date.now()},{merge:false}).catch(()=>{});if(window.__ddSessionUnsub)window.__ddSessionUnsub();try{const {onSnapshot}=await import('https://www.gstatic.com/firebasejs/11.10.0/firebase-firestore.js');window.__ddSessionUnsub=onSnapshot(ref,snap=>{const r=snap.data();if(r?.token&&r.token!==ddSessionToken()&&r.uid===uid){document.getElementById('sessionWarning')?.classList.add('show');try{window.DD_FB.signOut(window.DD_FB.auth)}catch(e){};localStorage.removeItem(DD_AUTH_KEY);document.getElementById('ddLoginOverlay')?.classList.add('show');}})}catch(e){}}
+            async function ddCloudPull(){if(!window.DD_FB?.auth?.currentUser)return;const uid=window.DD_FB.auth.currentUser.uid;const tenant=db.cloud?.tenantId||uid;try{const snap=await window.DD_FB.getDoc(window.DD_FB.doc(window.DD_FB.fs,'businesses',tenant));if(snap.exists()){const remote=snap.data()?.data;if(remote){db=mergeDB(remote);db.cloud.uid=uid;db.cloud.email=window.DD_FB.auth.currentUser.email||'';localStorage.setItem(KEY,JSON.stringify(db));refresh();renderHR();renderBranches();updateSubscriptionUI()}}else await ddCloudPush();}catch(e){console.warn(e);showToast('Cloud data could not be loaded')}}
+            async function ddCloudPush(){if(!window.DD_FB?.auth?.currentUser)return;const uid=window.DD_FB.auth.currentUser.uid;const tenant=db.cloud?.tenantId||uid;try{await window.DD_FB.setDoc(window.DD_FB.doc(window.DD_FB.fs,'businesses',tenant),{ownerUid:uid,ownerEmail:window.DD_FB.auth.currentUser.email||'',updatedAt:Date.now(),data:db},{merge:false});document.getElementById('cloudStatus')&&(document.getElementById('cloudStatus').textContent='Cloud • Saved');}catch(e){console.warn(e);document.getElementById('cloudStatus')&&(document.getElementById('cloudStatus').textContent='Cloud • Offline queue')}}
+            async function ddLogin(){const email=document.getElementById('ddLoginEmail').value.trim().toLowerCase();const password=document.getElementById('ddLoginPassword').value;const err=document.getElementById('ddLoginError');err.textContent='';const demo=DD_DEMO_ACCOUNTS[email];if(!demo){err.textContent='Account not found.';return}try{const hash=await ddHash(password);if(hash!==demo.passwordHash){err.textContent='Incorrect email or password.';return}const plan=demo.plan;ddSetAuth(email,plan,'');const s=ddGetSub();s.plan_type=plan;s.master_email=email;s.trial_start=s.trial_start||Date.now();s.expiry_date=s.expiry_date||ddExpiryFor(plan,s.trial_start);s.max_sub_users=DD_PLAN_LIMITS[plan];db.subscription=s;localStorage.setItem(DD_SUB_KEY,JSON.stringify(s));hideSubscriptionLock();document.getElementById('ddLoginOverlay').classList.remove('show');document.getElementById('licenseGate')?.classList.remove('show');updateSubscriptionUI();verifySubscriptionAccess(false);showToast('Signed in successfully');
+                    if(window.DD_FIREBASE_CONFIG?.projectId){const ok=await ddFirebaseInit();if(ok){try{const res=await window.DD_FB.signInWithEmailAndPassword(window.DD_FB.auth,email,password);db.cloud.uid=res.user.uid;db.cloud.email=res.user.email||email;db.cloud.enabled=true;db.subscription.master_uid=res.user.uid;saveDB();await ddCloudPull();await ddBindSession(res.user.uid)}catch(e){console.warn('Firebase sign-in unavailable; local demo session remains active',e);showToast('Local account active. Configure Firebase users for cloud sync.')}}}
+                }catch(e){err.textContent='Unable to sign in right now.'}}
+            async function signOutLocalSession(){try{if(window.DD_FB?.auth)await window.DD_FB.signOut(window.DD_FB.auth)}catch(e){}sessionStorage.removeItem(DD_SESSION_KEY);localStorage.removeItem(DD_AUTH_KEY);document.getElementById('subscriptionLock')?.classList.remove('show');document.getElementById('ddLoginOverlay')?.classList.add('show');}
+            function hasAccess(){return !!ddAuth()&&verifySubscriptionAccess(false)}
+            function updateAccessUI(){const gate=document.getElementById('licenseGate');if(gate)gate.classList.remove('show');const auth=ddAuth();if(!auth){document.getElementById('ddLoginOverlay')?.classList.add('show');return}document.getElementById('ddLoginOverlay')?.classList.remove('show');updateSubscriptionUI();verifySubscriptionAccess(false)}
+            async function ddBoot(){
+                const a=ddAuth();if(a){document.getElementById('ddLoginEmail').value=a.email||'';document.getElementById('ddLoginOverlay')?.classList.remove('show');ddGetSub();updateSubscriptionUI();verifySubscriptionAccess(false);if(window.DD_FIREBASE_CONFIG?.projectId){const ok=await ddFirebaseInit();if(ok&&window.DD_FB.auth.currentUser){db.cloud.uid=window.DD_FB.auth.currentUser.uid;db.cloud.email=window.DD_FB.auth.currentUser.email||a.email;db.cloud.enabled=true;await ddCloudPull()}}}else document.getElementById('ddLoginOverlay')?.classList.add('show');
+                renderSubscriptionPanel();
+            }
+            // Trial invoice watermark: override the existing print function without changing the invoice layout.
+            const ddOriginalPrintInvoice=window.printInvoice;
+            window.printInvoice=function(s){const sub=ddGetSub();let html=invoiceHTML(s);if(sub.plan_type==='7_days_trial')html=html.replace('</div>`','</div>');document.getElementById('printArea').innerHTML=html+(sub.plan_type==='7_days_trial'?'<div style="position:fixed;inset:0;display:flex;align-items:center;justify-content:center;pointer-events:none;opacity:.12;font-size:46px;font-weight:800;transform:rotate(-25deg);font-family:Arial">Digital Dokan - Free Trial</div>':'');window.print();document.getElementById('printArea').innerHTML=''};
+            // Keep normal saves local-first and queue cloud writes after connectivity returns.
+            const ddOriginalSaveDB=saveDB;saveDB=function(){ddOriginalSaveDB();if(window.DD_FB?.auth?.currentUser){clearTimeout(window.__ddSaveTimer);window.__ddSaveTimer=setTimeout(()=>ddCloudPush(),600)}};
+            window.addEventListener('online',()=>{if(window.DD_FB?.auth?.currentUser)ddCloudPush()});
+            document.addEventListener('visibilitychange',()=>{if(!document.hidden&&ddAuth()){ddGetSub();verifySubscriptionAccess(false);updateSubscriptionUI()}});
+            setInterval(()=>{if(ddAuth())verifySubscriptionAccess(false)},60000);
+            ddBoot();
         </script>
     </body>
 </html>
